@@ -266,7 +266,3 @@ function clearLogForm() {
     // Refresh the page
     location.reload();
 }
-
-/* Header generator */
-
-}
