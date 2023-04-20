@@ -40,3 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
 window.onload = function () {
     renderCanvas();
 }
+
+function clearCanvas() {
+    // Refresh the page
+    location.reload();
+}

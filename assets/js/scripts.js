@@ -268,3 +268,5 @@ function clearLogForm() {
 }
 
 /* Header generator */
+
+}
