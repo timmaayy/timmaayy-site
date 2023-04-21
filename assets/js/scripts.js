@@ -588,3 +588,31 @@ function clearSessionTwoForm() {
     // Refresh the page
     location.reload();
 }
+
+/** Setting UTC Time & Date */
+
+function setUTCDate() {
+    var now = new Date();
+    var dateField = document.getElementById("date");
+    var utcDate = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
+    var yyyy = utcDate.getUTCFullYear();
+    var mm = ('0' + (utcDate.getUTCMonth() + 1)).slice(-2);
+    var dd = ('0' + utcDate.getUTCDate()).slice(-2);
+    dateField.value = yyyy + "-" + mm + "-" + dd;
+}
+
+function setUTCStartTime() {
+    var now = new Date();
+    var hh = now.getUTCHours().toString().padStart(2, '0');
+    var mm = now.getUTCMinutes().toString().padStart(2, '0');
+    var timeStr = hh + ':' + mm;
+    document.getElementById('startTime').value = timeStr;
+}
+
+function setUTCEndTime() {
+    var now = new Date();
+    var hh = now.getUTCHours().toString().padStart(2, '0');
+    var mm = now.getUTCMinutes().toString().padStart(2, '0');
+    var timeStr = hh + ':' + mm;
+    document.getElementById('endTime').value = timeStr;
+}
