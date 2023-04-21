@@ -45,3 +45,23 @@ function clearCanvas() {
     // Refresh the page
     location.reload();
 }
+
+/* UTC Time */
+function showTime() {
+    var date = new Date();
+    date.setUTCHours(date.getUTCHours());
+    var hours = date.getUTCHours();
+    var minutes = date.getUTCMinutes();
+    var seconds = date.getUTCSeconds();
+    var ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+    var timeString = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    var dateString = date.toLocaleDateString('en-US', options);
+    var utcString = dateString + ', ' + timeString + ' UTC';
+    document.getElementById("time").innerHTML = utcString;
+}
+setInterval(showTime, 1000);
