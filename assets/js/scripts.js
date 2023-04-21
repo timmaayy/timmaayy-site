@@ -85,20 +85,6 @@ function toggleQuestion(id) {
     }
 }
 
-if (document.getElementById("studentPilot").value === "Yes") {
-    document.getElementById("additionalQuestion1").style.display = "block";
-}
-if (document.getElementById("privatePilot").value === "Yes") {
-    document.getElementById("additionalQuestion2").style.display = "block";
-}
-if (document.getElementById("instructorPilot").value === "Yes") {
-    document.getElementById("additionalQuestion3").style.display = "block";
-}
-if (document.getElementById("commercialPilot").value === "Yes") {
-    document.getElementById("additionalQuestion4").style.display = "block";
-}
-
-
 function generateLogOutput() {
 
     const logPilotName = document.getElementById("logPilotName").value;

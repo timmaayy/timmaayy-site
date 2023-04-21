@@ -161,11 +161,11 @@ h5 {
 
 .form-group .col-form-label.text-end {
     text-align: right;
-  }
+}
 
-  #myCanvas {
-  margin: 0 auto;
-  display: block;
+#myCanvas {
+    margin: 0 auto;
+    display: block;
 }
 
 /* Dark Theme Forms */
