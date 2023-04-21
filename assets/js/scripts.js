@@ -252,3 +252,139 @@ function clearLogForm() {
     // Refresh the page
     location.reload();
 }
+
+/* Flight Session 1 */
+function generateSessionOneOutput() {
+    // Retrieve input values
+    const date = document.getElementById("date").value;
+    const formattedDateTime = moment(date).format('DD/MMM/YYYY').toUpperCase();
+    const startTime = document.getElementById("startTime").value;
+    const endTime = document.getElementById("endTime").value;
+    const altitude = document.getElementById("altitude").value;
+    const communication = document.getElementById("communication").value;
+    const mapRestrictions = document.getElementById("mapRestrictions").value;
+    const hazardZones = document.getElementById("hazardZones").value;
+    const landingLocations = document.getElementById("landingLocations").value;
+    const emergencyLandings = document.getElementById("emergencyLandings").value;
+    const preFlightInspection = document.getElementById("preFlightInspection").value;
+    const weatherConditions = document.getElementById("weatherConditions").value;
+    const flightlogs = document.getElementById("flightlogs").value;
+    const mainRotor = document.getElementById("mainRotor").value;
+    const tailRotor = document.getElementById("tailRotor").value;
+    const engine = document.getElementById("engine").value;
+    const landingGear = document.getElementById("landingGear").value;
+    const cyclic = document.getElementById("cyclic").value;
+    const collective = document.getElementById("collective").value;
+    const throttle = document.getElementById("throttle").value;   
+    const pedals = document.getElementById("pedals").value;
+    const airspeed = document.getElementById("airspeed").value;
+    const altimeter = document.getElementById("altimeter").value;
+    const artificialHorizon = document.getElementById("artificialHorizon").value;
+    const headingIndicator = document.getElementById("headingIndicator").value;
+    const verticalSpeedIndicator = document.getElementById("verticalSpeedIndicator").value;
+    const fuelGauge = document.getElementById("fuelGauge").value;
+    const sessionNotes = document.getElementById("sessionNotes").value;
+    const behaviour = document.getElementById("behaviour").value;
+    const understand = document.getElementById("understand").value;
+    const questions = document.getElementById("questions").value;
+    const behaviourDetails = document.getElementById("behaviourDetails").value;
+    const understandDetails = document.getElementById("understandDetails").value;
+    const questionsDetails = document.getElementById("questionsDetails").value;
+ 
+    // Generate output message
+    const message = "[img]https://i.imgur.com/Lbi1XvO.png[/img]\n\
+\n\
+[divbox=white]\n\
+Date: " + date + "\n\
+Session Hours ((Please use UTC: https://time.is/UTC )): " + startTime + " > " + endTime + "\n\
+[/divbox]\n\
+\n\
+[divbox=#091f62][b][color=white]SESSION DETAILS[/color][/b][/divbox]\n\
+\n\
+[divbox=white]\n\
+Go through the checklist below, and mark each section with a [ x ] once completed. (YOU MUST GO THROUGH ALL OF THEM)\n\
+[/divbox]\n\
+\n\
+[divbox=#091f62][b][color=white]Aviation Guidelines[/color][/b][/divbox]\n\
+\n\
+[divbox=white]\n\
+[list]" + altitude + " Explained ALTITUDE[/list]\n\
+[list]" + communication + " Explained COMMUNICATION[/list]\n\
+[list]" + mapRestrictions + " Explained MAP AND RESTRICTIONS[/list]\n\
+[list]" + hazardZones + " Explained HAZARD ZONES[/list]\n\
+[list]" + landingLocations + " Explained LANDING LOCATIONS[/list]\n\
+[list]" + emergencyLandings + " Explained EMERGENCY LANDINGS[/list]\n\
+[list]" + preFlightInspection + " Explained PRE-FLIGHT INSPECTION[/list]\n\
+[list]" + weatherConditions + " Explained WEATHER CONDITIONS[/list]\n\
+[list]" + flightlogs + " Explained FLIGHT LOGS AND REPORTS[/list]\n\
+[/divbox]\n\
+\n\
+[divbox=#091f62][b][color=white]External Anatomy[/color][/b][/divbox]\n\
+\n\
+[divbox=white]\n\
+[list]" + mainRotor + " Shown the location of the MAIN ROTOR and explained its use[/list]\n\
+[list]" + tailRotor + " Shown the location of the TAIL ROTOR and explained its use[/list]\n\
+[list]" + engine + " Shown the location of the ENGINE and explained its use[/list]\n\
+[list]" + landingGear + " Shown the location of the LANDING GEAR and explained its use[/list]\n\
+[/divbox]\n\
+\n\
+[divbox=#091f62][b][color=white]Internal Anatomy[/color][/b][/divbox]\n\
+\n\
+[divbox=white]\n\
+[list]" + cyclic + " Explained the use of the CYCLIC[/list]\n\
+[list]" + collective + " Explained the use of the COLLECTIVE[/list]\n\
+[list]" + throttle + " Explained the use of the THROTTLE[/list]\n\
+[list]" + pedals + " Explained the use of the PEDALS[/list]\n\
+[/divbox]\n\
+\n\
+[divbox=#091f62][b][color=white]Flight Instrument Panel[/color][/b][/divbox]\n\
+\n\
+[divbox=white]\n\
+[list]" + airspeed + " Shown and explained what the AIRSPEED INDICATOR shows/does[/list]\n\
+[list]" + altimeter + " Shown and explained what the ALTIMETER shows/does[/list]\n\
+[list]" + artificialHorizon + " Shown and explained what the ARTIFICIAL HORIZON shows/does[/list]\n\
+[list]" + headingIndicator + " Shown and explained what the HEADING INDICATOR shows/does[/list]\n\
+[list]" + verticalSpeedIndicator + " Shown and explained what the VERTICAL SPEED INDICATOR shows/does[/list]\n\
+[list]" + fuelGauge + " Shown and explained what the FUEL GAUGE shows/does[/list]\n\
+[/divbox]\n\
+\n\
+[divbox=#091f62][b][color=white]Session Notes[/color][/b][/divbox]\n\
+[divbox=white]" + sessionNotes +
+"[/divbox]\n\
+[divbox=#091f62][b][color=white]Grade System[/color][/b][/divbox]\n\
+\n\
+[divbox=white]\n\
+[size=125]■[/size] - [dropshadow=black][color=#FF0000]Below satisfactory performance.[/color][/dropshadow]\n\
+[size=125]■■[/size] - [dropshadow=black][color=#FF8000]Needs some minor improvements.[/color][/dropshadow]\n\
+[size=125]■■■[/size] - [dropshadow=black][color=#00FF00]Satisfactory. [/color][/dropshadow]\n\
+[size=125]■■■■[/size] - [dropshadow=black][color=#00BF80]Outstanding, no room for improvements.[/color][/dropshadow]\n\
+[size=125]■■■■■[/size] - [dropshadow=black][color=#008040]Extraordinary[/color][/dropshadow]\n\
+\n\
+\n\
+[list]\n\
+[*] The student's general behaviour and attention span: " + behaviour + "\n\
+[list]\n\
+[*] " + behaviourDetails + "\n\
+[/list]\n\
+[*] The student's ability to understand each component of an aircraft : " + understand + "\n\
+[list]\n\
+[*] " + understandDetails + "\n\
+[/list]\n\
+[*] The student's answers to any of your questions: " + questions + "\n\
+[list]\n\
+[*] " + questionsDetails + "\n\
+[/list]\n\
+[/divbox]";
+
+    // Display certificate output message
+    document.getElementById("reportOutput").value = message;
+
+    const copyText = document.getElementById("reportOutput");
+    copyText.select();
+    document.execCommand("copy");
+}
+
+function clearSessionOneForm() {
+    // Refresh the page
+    location.reload();
+}
