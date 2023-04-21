@@ -1,3 +1,12 @@
+#time {
+    position: absolute;
+    top: 0;
+    right: 40px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
 body {
     min-height: 100vh;
     min-height: -webkit-fill-available;
@@ -196,12 +205,3 @@ h5 {
     border-color: rgb(60, 65, 68);
     box-shadow: none;
 }
-
-#time {
-    position: absolute;
-    top: 0;
-    right: 40px;
-    padding: 10px;
-    font-size: 16px;
-    font-weight: bold;
-  }
