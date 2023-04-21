@@ -275,7 +275,7 @@ function generateSessionOneOutput() {
     const landingGear = document.getElementById("landingGear").value;
     const cyclic = document.getElementById("cyclic").value;
     const collective = document.getElementById("collective").value;
-    const throttle = document.getElementById("throttle").value;   
+    const throttle = document.getElementById("throttle").value;
     const pedals = document.getElementById("pedals").value;
     const airspeed = document.getElementById("airspeed").value;
     const altimeter = document.getElementById("altimeter").value;
@@ -290,12 +290,12 @@ function generateSessionOneOutput() {
     const behaviourDetails = document.getElementById("behaviourDetails").value;
     const understandDetails = document.getElementById("understandDetails").value;
     const questionsDetails = document.getElementById("questionsDetails").value;
- 
+
     // Generate output message
     const message = "[img]https://i.imgur.com/Lbi1XvO.png[/img]\n\
 \n\
 [divbox=white]\n\
-Date: " + date + "\n\
+Date: " + formattedDateTime + "\n\
 Session Hours ((Please use UTC: https://time.is/UTC )): " + startTime + " > " + endTime + "\n\
 [/divbox]\n\
 \n\
@@ -385,6 +385,186 @@ Go through the checklist below, and mark each section with a [ x ] once complete
 }
 
 function clearSessionOneForm() {
+    // Refresh the page
+    location.reload();
+}
+
+/* Flight Session21 */
+function generateSessionTwoOutput() {
+    // Retrieve input values
+
+    console.log(document.getElementById("controlsGrade").value);
+
+    const date = document.getElementById("date").value;
+    const formattedDateTime = moment(date).format('DD/MMM/YYYY').toUpperCase();
+    const startTime = document.getElementById("startTime").value;
+    const endTime = document.getElementById("endTime").value;
+    const controls = document.getElementById("controls").value;
+    const controlsGrade = document.getElementById("controlsGrade").value;
+    const gauges = document.getElementById("gauges").value;
+    const lsiaCall = document.getElementById("lsiaCall").value;
+    const lsiaCallGrade = document.getElementById("lsiaCallGrade").value;
+    const studentLSIACall = document.getElementById("studentLSIACall").value;
+    const sandyCall = document.getElementById("sandyCall").value;
+    const sandyCallGrade = document.getElementById("sandyCallGrade").value;
+    const studentSandyCall = document.getElementById("studentSandyCall").value;
+    const flightControls = document.getElementById("flightControls").value;
+    const flightCheck = document.getElementById("flightCheck").value;
+    const instructorHover = document.getElementById("instructorHover").value;
+    const instructorSHops = document.getElementById("instructorSHops").value;
+    const instructorHHops = document.getElementById("instructorHHops").value;
+    const instructorLHops = document.getElementById("instructorLHops").value;
+    const instructorDirectionalFlight = document.getElementById("instructorDirectionalFlight").value;
+    const instructorFigureEight = document.getElementById("instructorFigureEight").value;
+    const instructorHover2 = document.getElementById("instructorHover2").value;
+    const instructorLandingGear = document.getElementById("instructorLandingGear").value;
+    const instructorWaterHover = document.getElementById("instructorWaterHover").value;
+    const studentHover = document.getElementById("studentHover").value;
+    const studentHoverGrade = document.getElementById("studentHoverGrade").value;
+    const studentSHops = document.getElementById("studentSHops").value;
+    const studentSHopsGrade = document.getElementById("studentSHopsGrade").value;
+    const studentHHops = document.getElementById("studentHHops").value;
+    const studentHHopsGrade = document.getElementById("studentHHopsGrade").value;
+    const studentLHop = document.getElementById("studentLHop").value;
+    const studentLHopGrade = document.getElementById("studentLHopGrade").value;
+    const studentDirectionalFlight = document.getElementById("studentDirectionalFlight").value;
+    const studentDirectionalFlightGrade = document.getElementById("studentDirectionalFlightGrade").value;
+    const studentFigureEight = document.getElementById("studentFigureEight").value;
+    const studentFigureEightGrade = document.getElementById("studentFigureEightGrade").value;
+    const studentWaterHover = document.getElementById("studentWaterHover").value;
+    const studentWaterHoverGrade = document.getElementById("studentWaterHoverGrade").value;
+    const sessionNotes = document.getElementById("sessionNotes").value;
+    const behaviour = document.getElementById("behaviour").value;
+    const behaviourDetails = document.getElementById("behaviourDetails").value;
+    const takeOff = document.getElementById("takeOff").value;
+    const takeOffDetails = document.getElementById("takeOffDetails").value;
+    const directionalFlight = document.getElementById("directionalFlight").value;
+    const directionalFlightDetails = document.getElementById("directionalFlightDetails").value;
+    const approachLanding = document.getElementById("approachLanding").value;
+    const approachLandingDetails = document.getElementById("approachLandingDetails").value;
+    const proceed = document.getElementById("proceed").value;
+
+    // Generate output message
+    const message = "[img]https://i.imgur.com/uDGP3ab.png[/img]\n\
+[divbox=white]\n\
+Date: " + formattedDateTime + "\n\
+Session Hours ((Please use UTC: https://time.is/UTC )): " + startTime + " > " + endTime + "\n\
+[/divbox]\n\
+\n\
+[divbox=#091f62][b][color=white]SESSION DETAILS[/color][/b][/divbox]\n\
+\n\
+[divbox=white]\n\
+Go through the checklist below, and mark each section with a [ x ] once completed. (YOU MUST GO THROUGH ALL OF THEM)\n\
+\n\
+[b]Grading System[/b]\n\
+[size=125]■[/size] - [dropshadow=black][color=#FF0000]Below satisfactory performance.[/color][/dropshadow]\n\
+[size=125]■■[/size] - [dropshadow=black][color=#FF8000]Needs some minor improvements.[/color][/dropshadow]\n\
+[size=125]■■■[/size] - [dropshadow=black][color=#00FF00]Satisfactory. [/color][/dropshadow]\n\
+[size=125]■■■■[/size] - [dropshadow=black][color=#00BF80]Outstanding, no room for improvements.[/color][/dropshadow]\n\
+[size=125]■■■■■[/size] - [dropshadow=black][color=#008040]Extraordinary[/color][/dropshadow]\n\
+[/divbox]\n\
+[divbox=#091f62][b][color=white]Theory Session[/color][/b][/divbox]\n\
+[divbox=white]\n\
+" + controls + " The Instructor verifies student knowledge of the Cyclic, Collective, and Anti-Torque Pedals:\n\
+[list=none]GRADE: " + controlsGrade + "[/list]\n\
+" + gauges + " The instructor verifies student knowledge of the primary gauges within the instrument panel.\n\
+" + lsiaCall + "  The instructor asks the student to make a mock ATC call for taxiing to a refuel station at LSIA: \n\
+[list=none]GRADE: " + lsiaCallGrade + "[/list]\n\
+[list]\n\
+[*] Example: PHOENIX-16 to ATC, show me taxiing to LSIA fuelling station.\n\
+[*] Student's Example: " + studentLSIACall + "\n\
+[/list]\n\
+" + sandyCall + " The instructor asks the student to make a mock ATC call for heading to Sandy Airfield from LSIA Helipad One:\n\
+[list=none]GRADE: " + sandyCallGrade + "[/list]\n\
+[list]\n\
+[*] Example: PHOENIX-16 to ATC, show me ascending to 2000 feet above LSIA Helipad One, heading Northbound to Sandy Airfield.\n\
+[*] Student's Example: " + studentSandyCall + "\n\
+[/list]\n\
+" + flightControls + " [ooc]The instructor goes over the student's OOC flight controls with them.[/ooc]\n\
+" + flightCheck + " The instructor shows the student an example of a pre-flight check.\n\
+\n\
+[/divbox]\n\
+[divbox=#091f62][b][color=white]Instructor's Flight[/color][/b][/divbox]\n\
+\n\
+[divbox=white]\n\
+[b][u]The instructor is to pilot the Aircraft. Bring the Aircraft to LSIA Helipad One. The flight is to start and stop at LSIA Helipad One.[/u][/b]\n\
+\n\
+" + instructorHover + " The instructor showed the student how to perform a hover above LSIA Helipad One.\n\
+" + instructorSHops + " The instructor showed the student how to perform short hops with the Frogger between the LSIA Helipads.\n\
+" + instructorHHops + " The instructor showed the student how to perform high hops with the Frogger between the LSIA Helipads.\n\
+" + instructorLHops + " The instructor showed the student how to fly to LSIA Runway 1 and showed the student how to perform a long hop to LSIA Runway 2.\n\
+" + instructorDirectionalFlight + " The instructor showed the student how to perform directional flight along the LSIA Runways in the shape of an L from start to finish.\n\
+" + instructorFigureEight + " The instructor showed the student how to perform figure-8's with the Frogger between the two poles near Runway 2.\n\
+" + instructorHover2 + " The instructor showed the student how to hover the Frogger above LSIA Helipad One.\n\
+" + instructorLandingGear + " The instructor showed the student how to retract and protract the landing gear on the Swift helicopter.\n\
+" + instructorWaterHover + " The instructor showed the student how to perform a water hover with the Swift helicopter.\n\
+\n\
+[/divbox]\n\
+[divbox=#091f62][b][color=white]Student's Flight[/color][/b][/divbox]\n\
+\n\
+[divbox=white]\n\
+[b][u]The instructor is to hand over controls of the Frogger to the Student and allow them to practice after being shown what to do.[/u][/b]\n\
+\n\
+" + studentHover + " The student was able to perform a steady hover with the Frogger for a minute without error.\n\
+[list=none]GRADE: " + studentHoverGrade + "[/list]\n\
+" + studentSHops + " The student performed short hops with the Frogger between LSIA Helipad 1, 2, and 3.\n\
+[list=none]GRADE: " + studentSHopsGrade + "[/list]\n\
+" + studentHHops + " The student performed high hops with the Frogger between LSIA Helipad 1, 2, and 3.\n\
+[list=none]GRADE: " + studentHHopsGrade + "[/list]\n\
+" + studentLHop + " The student flew to LSIA Runway 1 and was able to perform a long hop to LSIA Runway 2.\n\
+[list=none]GRADE: " + studentLHopGrade + "[/list]\n\
+" + studentDirectionalFlight + " The student was able to perform directional flight along the LSIA Runways in the shape of an L from start to finish.\n\
+[list=none]GRADE: " + studentDirectionalFlightGrade + "[/list]\n\
+" + studentFigureEight + " The student was able to perform figure-8's with the Frogger between the two poles near Runway 2.\n\
+[list=none]GRADE: " + studentFigureEightGrade + "[/list]\n\
+" + studentWaterHover + " The student was able to perform a steady hover directly on the water with the Swift helicopter.\n\
+[list=none]GRADE: " + studentWaterHoverGrade + "[/list]\n\
+\n\
+[/divbox]\n\
+[divbox=#091f62][b][color=white]Session Notes[/color][/b][/divbox]\n\
+[divbox=white]\n\
+[b]Session Notes are important to tell us how a student performed in their flight training session. A lot of the notes will be included in the actual grading below and in other areas, so there's not much that you're required to say here.[/b] [color=red]MINIMUM 30 WORDS[/color]\n\
+\n\
+" + sessionNotes +
+"\n\
+[color=transparent]SPACER[/color]\n\
+[/divbox]\n\
+[divbox=#091f62][b][color=white]Overall Grade[/color][/b][/divbox]\n\
+[divbox=white]\n\
+\n\
+[list]\n\
+[*] The student's general behavior and attention span: " + behaviour + "\n\
+[list]\n\
+[*] " + behaviourDetails + "\n\
+[/list]\n\
+[*] The student's ability to perform a take-off: " + takeOff + "\n\
+[list]\n\
+[*] " + takeOffDetails + "\n\
+[/list]\n\
+[*] The student's ability to perform directional flight: " + directionalFlight + "\n\
+[list]\n\
+[*] " + directionalFlightDetails + "\n\
+[/list]\n\
+[*] The student's ability to conduct an approach and landing: " + approachLanding + "\n\
+[list]\n\
+[*] " + approachLandingDetails + "\n\
+[/list]\n\
+[*] Do you think the student can proceed to the next session?\n\
+[list]\n\
+[*] " + proceed + "\n\
+[/list]\n\
+\n\
+[/divbox]";
+
+    // Display certificate output message
+    document.getElementById("reportOutput").value = message;
+
+    const copyText = document.getElementById("reportOutput");
+    copyText.select();
+    document.execCommand("copy");
+}
+
+function clearSessionTwoForm() {
     // Refresh the page
     location.reload();
 }
