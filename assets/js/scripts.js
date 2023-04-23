@@ -409,11 +409,9 @@ function clearSessionOneForm() {
     location.reload();
 }
 
-/* Flight Session21 */
+/* Flight Session2 */
 function generateSessionTwoOutput() {
     // Retrieve input values
-
-    console.log(document.getElementById("controlsGrade").value);
 
     const date = document.getElementById("date").value;
     const formattedDateTime = moment(date).format('DD/MMM/YYYY').toUpperCase();
@@ -615,4 +613,174 @@ function setUTCEndTime() {
     var mm = now.getUTCMinutes().toString().padStart(2, '0');
     var timeStr = hh + ':' + mm;
     document.getElementById('endTime').value = timeStr;
+}
+
+/* Flight Session2 */
+function generateSessionThreeOutput() {
+    // Retrieve input values
+
+    const date = document.getElementById("date").value;
+    const formattedDateTime = moment(date).format('DD/MMM/YYYY').toUpperCase();
+    const startTime = document.getElementById("startTime").value;
+    const endTime = document.getElementById("endTime").value;
+    const altitude = document.getElementById("altitude").value;
+    const airspace = document.getElementById("airspace").value;
+    const weather = document.getElementById("weather").value;
+    const flightCheck = document.getElementById("flightCheck").value;
+    const flightCheckGrade = document.getElementById("flightCheckGrade").value;
+    const studentRoleplay = document.getElementById("studentRoleplay").value;
+    const call1 = document.getElementById("call1").value;
+    const call2 = document.getElementById("call2").value;
+    const call3 = document.getElementById("call3").value;
+    const call4 = document.getElementById("call4").value;
+    const call5 = document.getElementById("call5").value;
+    const call6 = document.getElementById("call6").value;
+    const call7 = document.getElementById("call7").value;
+    const emergencyLanding = document.getElementById("emergencyLanding").value;
+    const emergencyLandingGrade = document.getElementById("emergencyLandingGrade").value;
+    const atcCommunication = document.getElementById("atcCommunication").value;
+    const atcCall = document.getElementById("atcCall").value;
+    const landingProdceedures = document.getElementById("landingProdceedures").value;
+    const sessionNotes = document.getElementById("sessionNotes").value;
+    const behaviour = document.getElementById("behaviour").value;
+    const behaviourDetails = document.getElementById("behaviourDetails").value;
+    const takeOff = document.getElementById("takeOff").value;
+    const takeOffDetails = document.getElementById("takeOffDetails").value;
+    const directionalFlight = document.getElementById("directionalFlight").value;
+    const directionalFlightDetails = document.getElementById("directionalFlightDetails").value;
+    const approachLanding = document.getElementById("approachLanding").value;
+    const approachLandingDetails = document.getElementById("approachLandingDetails").value;
+    const airTrafficControl = document.getElementById("airTrafficControl").value;
+    const airTrafficControlDetails = document.getElementById("airTrafficControlDetails").value;
+    const proceed = document.getElementById("proceed").value;
+
+    // Generate output message
+    const message = "[img]https://i.imgur.com/xhXuAFN.png[/img]\n\
+[divbox=white]\n\
+Date: " + formattedDateTime + "\n\
+Session Hours ((Please use UTC: https://time.is/UTC )): " + startTime + " > " + endTime + "\n\
+[/divbox]\n\
+\n\
+[divbox=#091f62][b][color=white]SESSION DETAILS[/color][/b][/divbox]\n\
+\n\
+[divbox=white]\n\
+Go through the checklist below, and mark each section with a [ x ] once completed. (YOU MUST GO THROUGH ALL OF THEM)\n\
+\n\
+[b]Grading System[/b]\n\
+[size=125]■[/size] - [dropshadow=black][color=#FF0000]Below satisfactory performance.[/color][/dropshadow]\n\
+[size=125]■■[/size] - [dropshadow=black][color=#FF8000]Needs some minor improvements.[/color][/dropshadow]\n\
+[size=125]■■■[/size] - [dropshadow=black][color=#00FF00]Satisfactory. [/color][/dropshadow]\n\
+[size=125]■■■■[/size] - [dropshadow=black][color=#00BF80]Outstanding, no room for improvements.[/color][/dropshadow]\n\
+[size=125]■■■■■[/size] - [dropshadow=black][color=#008040]Extraordinary[/color][/dropshadow]\n\
+[/divbox]\n\
+\n\
+[divbox=#091f62][b][color=white]Theory Session[/color][/b][/divbox]\n\
+[divbox=white]\n\
+" + altitude + " The instructor verifies the student's knowledge of altitude whilst operating an Aircraft. (2000FT city, 750FT outside city, and 500FT or higher above emergency aircrafts).\n\
+" + airspace + " The instructor verifies the student's knowledge of restricted versus prohibited airspace.\n\
+[list]\n\
+[*] Restricted airspaces are off-limit areas that require the submission of an Airspace Authorization Form in order to enter.\n\
+[*] Prohibited airspaces are off-limit areas that should not be entered under any circumstances.\n\
+[*] If either is entered without authorization (i.e. emergency landing), you must submit an incident report.\n\
+[/list]\n\
+" + weather + " The instructor verified the student's knowledge of weather conditions.\n\
+\n\
+[/divbox]\n\
+[divbox=#091f62][b][color=white]Pre-Flight Check[/color][/b][/divbox]\n\
+[divbox=white]\n\
+[b]The instructor showed the student how to perform a pre-flight check during FTS-2. Now, it is their turn.[/b]\n\
+\n\
+" + flightCheck + " The student was able to perform a pre-flight check on the aircraft, both internally and externally.\n\
+[list=none]GRADE: " + flightCheckGrade + "[/list]\n\
+[ooc][spoiler=Student's RP]\n\
+" + studentRoleplay + "\n\
+[/spoiler][/ooc]\n\
+\n\
+[/divbox]\n\
+[divbox=#091f62][b][color=white]ATC Communication[/color][/b][/divbox]\n\
+[divbox=white]\n\
+[b]SAAA Hangar --> LSIA Helipad One (taxi) --> Sandy Airfield --> SAAA Paleto Helipad One --> LSIA Helipad One[/b]\n\
+[hr][/hr]\n\
+[b]Please write down their exact phrasing of communication with ATC word for word. There should be a total of 7 calls to ATC.[/b]\n\
+\n\
+[list]\n\
+[*] " + call1 + "\n\
+[*] " + call2 + "\n\
+[*] " + call3 + "\n\
+[*] " + call4 + "\n\
+[*] " + call5 + "\n\
+[*] " + call6 + "\n\
+[*] " + call7 + "\n\
+[/list]\n\
+\n\
+[/divbox]\n\
+[divbox=#091f62][b][color=white]Emergency Landing[/color][/b][/divbox]\n\
+[divbox=white]\n\
+[b]The instructor is to attempt to roleplay a realistic emergency landing scenario. Include any notes about the emergency landing within the session notes below. (Ex: Oh no... ohhhh no no no that's not good, your tail rotor is on fire! We need to conduct an emergency landing fast!!)[/b]\n\
+\n\
+[list=none]\n\
+" + emergencyLanding + " The student conducted an emergency landing.\n\
+[list=none]GRADE: " + emergencyLandingGrade + "[/list]\n\
+" + atcCommunication + " The student correctly communicated with ATC\n\
+[list]\n\
+[*] " + atcCall + "\n\
+[/list]\n\
+" + landingProdceedures + " The student was informed about the procedures after conducting an emergency landing.\n\
+[list]\n\
+[*] Make every effort to get in contact with someone from SAAA. Call 911 and get assistance from local law enforcement.\n\
+[*] Have a mechanic come for a repair.\n\
+[*] Create an incident report.\n\
+[/list]\n\
+[/list]\n\
+[/divbox]\n\
+[divbox=#091f62][b][color=white]Session Notes[/color][/b][/divbox]\n\
+[divbox=white]\n\
+[b]As the flight instructor, you are required to give a detailed report in regard to the guided flight session below. Instead of grading each travel, you can grade their overall abilities combined in the final section.[/b] [color=red]MINIMUM 50 WORDS[/color]\n\
+\n\
+\n\
+" + sessionNotes + " \n\
+\n\
+[color=transparent]SPACER[/color]\n\
+[/divbox]\n\
+[divbox=#091f62][b][color=white]Overall Grade[/color][/b][/divbox]\n\
+[divbox=white]\n\
+\n\
+[list]\n\
+[*] The student's general behavior and attention span: " + behaviour + "\n\
+[list]\n\
+[*] " + behaviourDetails + "\n\
+[/list]\n\
+[*] The student's ability to perform a take-off: " + takeOff + "\n\
+[list]\n\
+[*] " + takeOffDetails + "\n\
+[/list]\n\
+[*] The student's ability to perform directional flight: " + directionalFlight + "\n\
+[list]\n\
+[*] " + directionalFlightDetails + "\n\
+[/list]\n\
+[*] The student's ability to perform an approach and landing: " + approachLanding + "\n\
+[list]\n\
+[*] " + approachLandingDetails + "\n\
+[/list]\n\
+[*] The student's ability to communicate with Air Traffic Control: " + airTrafficControl + "\n\
+[list]\n\
+[*] " + airTrafficControlDetails + "\n\
+[/list]\n\
+[*] Do you think the student can proceed to the final examination?\n\
+[list]\n\
+[*] " + proceed + "\n\
+[/list]\n\
+[/divbox]";
+
+    // Display certificate output message
+    document.getElementById("reportOutput").value = message;
+
+    const copyText = document.getElementById("reportOutput");
+    copyText.select();
+    document.execCommand("copy");
+}
+
+function clearSessionThreeForm() {
+    // Refresh the page
+    location.reload();
 }

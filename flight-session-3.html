@@ -100,13 +100,15 @@
                         Flight School
                     </a>
                     <ul class="collapse show" id="flightschool-submenu">
-                        <li><a href="https://gov.eclipse-rp.net/viewtopic.php?t=121184" class="nav-link text-white" target="_blank">Instructor Handbook</a>
+                        <li><a href="https://gov.eclipse-rp.net/viewtopic.php?t=121184" class="nav-link text-white"
+                                target="_blank">Instructor Handbook</a>
                         </li>
                         <li><a href="flight-session-1.html" class="nav-link text-white">Flight Session 1</a>
                         </li>
                         <li><a href="flight-session-2.html" class="nav-link text-white">Flight Session 2</a>
                         </li>
-                        <li><a href="flight-session-3.html" class="nav-link active" aria-current="page">Flight Session 3</a>
+                        <li><a href="flight-session-3.html" class="nav-link active" aria-current="page">Flight Session
+                                3</a>
                         </li>
                         <li><a href="flight-session-4.html" class="nav-link text-white">Flight Session 4</a>
                         </li>
@@ -153,11 +155,404 @@
         <main class="d-flex flex-column flex-grow-1 min-vh-100 " style="overflow-y: scroll;">
             <div id="time"></div>
             <div class=" mt-4 px-4" id="content">
-            <h2>Flight Session 3 Report</h2><br>
+                <h2>Flight Session 3 Report</h2><br>
 
-            <form id="sessionthree">
+                <form id="sessionthree">
 
-            </form>
+                    <h5>Session Information</h5>
+                    <div class="form-group row mb-2">
+                        <label for="date" class="col-sm-2 col-form-label text-end">Date</label>
+                        <div class="col-sm-8">
+                            <div class="d-flex">
+                                <input type="date" id="date" name="date" class="form-control me-2" required
+                                    style="width: 400px;" placeholder="Date">
+                                <button type="button" onclick="setUTCDate()" class="btn btn-primary">Set UTC
+                                    Date</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                        <label for="startTime" class="col-sm-2 col-form-label text-end">Start Time</label>
+                        <div class="col-sm-8">
+                            <div class="d-flex">
+                                <input type="time" id="startTime" name="startTime" class="form-control me-2" required
+                                    style="width: 400px;" placeholder="Start Time">
+                                <button type="button" onclick="setUTCStartTime()" class="btn btn-primary">Set UTC
+                                    Time</button>
+                            </div>
+                            <small id="startTimeHelp" class="form-text text-muted">Please use UTC time.</small>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                        <label for="endTime" class="col-sm-2 col-form-label text-end">End Time</label>
+                        <div class="col-sm-8">
+                            <div class="d-flex">
+                                <input type="time" id="endTime" name="endTime" class="form-control me-2" required
+                                    style="width: 400px;" placeholder="End Time">
+                                <button type="button" onclick="setUTCEndTime()" class="btn btn-primary">Set UTC
+                                    Time</button>
+                            </div>
+                            <small id="endTimeHelp" class="form-text text-muted">Please use UTC time.</small>
+                        </div>
+                    </div>
+
+                    <h5>Session Details</h5>
+
+                    <br>
+                    <h6>Theory Session</h6>
+                    <p>Go through the below, set each option to Yes once verified with the student based off their
+                        knowledge.</p>
+                    <div class="form-group row mb-2">
+                        <label for="altitude" class="col-sm-2 col-form-label  text-end">Altitude</label>
+                        <div class="col-sm-10">
+                            <select id="altitude" name="altitude" class="form-select" required style="width: 400px">
+                                <option value="[ ]">No</option>
+                                <option value="[X]">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                        <label for="airspace" class="col-sm-2 col-form-label  text-end">Restricted & Prohibited
+                            Airspace</label>
+                        <div class="col-sm-10">
+                            <select id="airspace" name="airspace" class="form-select" required style="width: 400px">
+                                <option value="[ ]">No</option>
+                                <option value="[X]">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                        <label for="weather" class="col-sm-2 col-form-label  text-end">Weather Conditions</label>
+                        <div class="col-sm-10">
+                            <select id="weather" name="weather" class="form-select" required style="width: 400px">
+                                <option value="[ ]">No</option>
+                                <option value="[X]">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <br>
+                    <h6>Pre-Flight Check</h6>
+                    <p>Go through the below, set each option to Yes once demonstrated by the student and grade the
+                        student based off their
+                        ability.</p>
+                    <p>1 - Below satisfactory performance. 2- Needs some minor improvements. 3 - Satisfactory. 4 -
+                        Outstanding, no room for improvements. 5 - Extraordinary</p>
+                    <div class="form-group row mb-2">
+                        <label for="flightCheck" class="col-lg-2 col-sm-2 col-form-label text-end">Pre-flight
+                            Check</label>
+                        <div class="col-lg-4 col-sm-10">
+                            <select id="flightCheck" name="flightCheck" class="form-select" required
+                                style="width: 400px">
+                                <option value="[ ]">No</option>
+                                <option value="[X]">Yes</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-6 col-sm-12" style="display: block;">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <label for="flightCheckGrade" class="col-form-label text-end">Grade</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <select id="flightCheckGrade" name="flightCheckGrade" class="form-select" required
+                                        style="width: 150px">
+                                        <option value="[ ■ ]">1</option>
+                                        <option value="[ ■■ ]">2</option>
+                                        <option value="[ ■■■ ]">3</option>
+                                        <option value="[ ■■■■ ]">4</option>
+                                        <option value="[ ■■■■■ ]">5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                        <label class="col-sm-2 col-form-label text-end">(( Student's Roleplay ))</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control focus-bg" id="studentRoleplay"
+                                style="width: 600px; height: 80px;"
+                                placeholder="Type each line of their RP here..."></textarea>
+                        </div>
+                    </div>
+
+                    <br>
+                    <h6>ATC Communication</h6>
+                    <p>Please write down the Student's exact phrasing of communication with ATC word for word. There
+                        should be a total of 7 calls to ATC.</p>
+                    <div class="form-group row mb-2">
+                        <label for="call1" class="col-sm-2 col-form-label text-end">ATC Call 1</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="call1" name="call1" class="form-control" required
+                                style="width: 600px" placeholder="ATC Call 1">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label for="call2" class="col-sm-2 col-form-label text-end">ATC Call 2</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="call2" name="call2" class="form-control" required
+                                style="width: 600px" placeholder="ATC Call 2">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label for="call3" class="col-sm-2 col-form-label text-end">ATC Call 3</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="call3" name="call3" class="form-control" required
+                                style="width: 600px" placeholder="ATC Call 3">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label for="call4" class="col-sm-2 col-form-label text-end">ATC Call 4</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="call4" name="call4" class="form-control" required
+                                style="width: 600px" placeholder="ATC Call 4">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label for="call5" class="col-sm-2 col-form-label text-end">ATC Call 5</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="call5" name="call5" class="form-control" required
+                                style="width: 600px" placeholder="ATC Call 5">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label for="call6" class="col-sm-2 col-form-label text-end">ATC Call 6</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="call6" name="call6" class="form-control" required
+                                style="width: 600px" placeholder="ATC Call 6">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label for="call7" class="col-sm-2 col-form-label text-end">ATC Call 7</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="call7" name="call7" class="form-control" required
+                                style="width: 600px" placeholder="ATC Call 7">
+                        </div>
+                    </div>
+
+                    <br>
+                    <h6>Emergency Landing</h6>
+                    <p>Go through the below, set each option to Yes once explained and grade the student based off their
+                        ability.</p>
+                    <p>1 - Below satisfactory performance. 2- Needs some minor improvements. 3 - Satisfactory. 4 -
+                        Outstanding, no room for improvements. 5 - Extraordinary</p>
+                    <div class="form-group row mb-2">
+                        <label for="emergencyLanding" class="col-lg-2 col-sm-2 col-form-label text-end">Student Emergeny
+                            Landing</label>
+                        <div class="col-lg-4 col-sm-10">
+                            <select id="emergencyLanding" name="emergencyLanding" class="form-select" required
+                                style="width: 400px">
+                                <option value="[ ]">No</option>
+                                <option value="[X]">Yes</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-6 col-sm-12" style="display: block;">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <label for="emergencyLandingGrade" class="col-form-label text-end">Grade</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <select id="emergencyLandingGrade" name="emergencyLandingGrade" class="form-select"
+                                        required style="width: 150px">
+                                        <option value="[ ■ ]">1</option>
+                                        <option value="[ ■■ ]">2</option>
+                                        <option value="[ ■■■ ]">3</option>
+                                        <option value="[ ■■■■ ]">4</option>
+                                        <option value="[ ■■■■■ ]">5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                        <label for="atcCommunication" class="col-sm-2 col-form-label  text-end">ATC
+                            Communication</label>
+                        <div class="col-sm-10">
+                            <select id="atcCommunication" name="atcCommunication" class="form-select" required
+                                style="width: 400px">
+                                <option value="[ ]">No</option>
+                                <option value="[X]">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label class="col-sm-2 col-form-label text-end"></label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control focus-bg" id="atcCall" style="width: 400px; height: 80px;"
+                                placeholder="Enter the ATC call here..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-2">
+                        <label for="landingProdceedures" class="col-sm-2 col-form-label  text-end">Emergency Landing
+                            Proceedures</label>
+                        <div class="col-sm-10">
+                            <select id="landingProdceedures" name="landingProdceedures" class="form-select" required
+                                style="width: 400px">
+                                <option value="[ ]">No</option>
+                                <option value="[X]">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <h5>Session Notes</h5>
+                    <div class="form-group row mb-2">
+                        <label class="col-sm-2 col-form-label text-end">Enter Session Notes</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="sessionNotes" style="height: 100px;"
+                                placeholder="Input notes here..."></textarea>
+                            <small class="text-muted">Minimum 50 words</small>
+                        </div>
+                    </div>
+
+                    <h5>Session Grading</h5>
+                <p>Grade the Student's permforce out of 5 on the below.</p>
+                <p>1 - Below satisfactory performance. 2- Needs some minor improvements. 3 - Satisfactory. 4 -
+                    Outstanding, no room for improvements. 5 - Extraordinary</p>
+                <div class="form-group row mb-2">
+                    <label for="behaviour" class="col-sm-2 col-form-label  text-end">General Behaviour &
+                        Attention</label>
+                    <div class="col-sm-10">
+                        <select id="behaviour" name="behaviour" class="form-select" required style="width: 400px">
+                            <option value="[ ■ ]">1</option>
+                            <option value="[ ■■ ]">2</option>
+                            <option value="[ ■■■ ]">3</option>
+                            <option value="[ ■■■■ ]">4</option>
+                            <option value="[ ■■■■■ ]">5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-2">
+                    <label class="col-sm-2 col-form-label text-end"></label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="behaviourDetails"
+                            style="width: 400px; height: 100px;"
+                            placeholder="Provide Details Here..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-2">
+                    <label for="takeOff" class="col-sm-2 col-form-label  text-end">Take off</label>
+                    <div class="col-sm-10">
+                        <select id="takeOff" name="takeOff" class="form-select" required style="width: 400px">
+                            <option value="[ ■ ]">1</option>
+                            <option value="[ ■■ ]">2</option>
+                            <option value="[ ■■■ ]">3</option>
+                            <option value="[ ■■■■ ]">4</option>
+                            <option value="[ ■■■■■ ]">5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-2">
+                    <label class="col-sm-2 col-form-label text-end"></label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="takeOffDetails"
+                            style="width: 400px; height: 100px;"
+                            placeholder="Provide Details Here..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-2">
+                    <label for="directionalFlight" class="col-sm-2 col-form-label  text-end">Directional Flight</label>
+                    <div class="col-sm-10">
+                        <select id="directionalFlight" name="directionalFlight" class="form-select" required style="width: 400px">
+                            <option value="[ ■ ]">1</option>
+                            <option value="[ ■■ ]">2</option>
+                            <option value="[ ■■■ ]">3</option>
+                            <option value="[ ■■■■ ]">4</option>
+                            <option value="[ ■■■■■ ]">5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-2">
+                    <label class="col-sm-2 col-form-label text-end"></label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control focus-bg" id="directionalFlightDetails"
+                            style="width: 400px; height: 100px;"
+                            placeholder="Provide Details Here..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-2">
+                    <label for="approachLanding" class="col-sm-2 col-form-label  text-end">Approach & Landing</label>
+                    <div class="col-sm-10">
+                        <select id="approachLanding" name="approachLanding" class="form-select" required style="width: 400px">
+                            <option value="[ ■ ]">1</option>
+                            <option value="[ ■■ ]">2</option>
+                            <option value="[ ■■■ ]">3</option>
+                            <option value="[ ■■■■ ]">4</option>
+                            <option value="[ ■■■■■ ]">5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-2">
+                    <label class="col-sm-2 col-form-label text-end"></label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control focus-bg" id="approachLandingDetails"
+                            style="width: 400px; height: 100px;"
+                            placeholder="Provide Details Here..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-2">
+                    <label for="airTrafficControl" class="col-sm-2 col-form-label  text-end">Air Traffic Control</label>
+                    <div class="col-sm-10">
+                        <select id="airTrafficControl" name="airTrafficControl" class="form-select" required style="width: 400px">
+                            <option value="[ ■ ]">1</option>
+                            <option value="[ ■■ ]">2</option>
+                            <option value="[ ■■■ ]">3</option>
+                            <option value="[ ■■■■ ]">4</option>
+                            <option value="[ ■■■■■ ]">5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-2">
+                    <label class="col-sm-2 col-form-label text-end"></label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control focus-bg" id="airTrafficControlDetails"
+                            style="width: 400px; height: 100px;"
+                            placeholder="Provide Details Here..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group row mb-2">
+                    <label class="col-sm-2 col-form-label text-end">Proceed to Final Examination?</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="proceed" style="height: 100px; width: 400px;"
+                            placeholder="Provide Details Here..."></textarea>
+                    </div>
+                </div>
+
+                    <div class="form-group row my-4">
+                        <div class="col-sm-10 offset-sm-2 d-flex justify-content-start">
+                            <button class="btn btn-primary me-2" type="button"
+                                onclick="generateSessionThreeOutput()">Generate
+                                &
+                                Copy</button>
+                            <button class="btn btn-outline-dark" type="button" id="btnClear"
+                                onclick="clearSessionThreeForm()">Reset</button>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label class="col-sm-2 col-form-label text-end">Output</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="reportOutput" readonly
+                                style="height: 200px; background-color: #212529; color: #f0f0f0;"
+                                placeholder="Generated output will display here"></textarea>
+                        </div>
+                    </div>
+
+                </form>
             </div>
             <footer class="footer mt-auto py-3 bg-custom">
                 <div class="b-footer-divider"></div>
