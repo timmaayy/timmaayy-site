@@ -71,7 +71,7 @@ setInterval(showTime, 1000);
 const headerCanvas = document.getElementById("myHeaderCanvas");
 const headerCtx = headerCanvas.getContext("2d");
 const headerImage = new Image();
-headerImage.src = "https://i.imgur.com/bfNfX8k.png";
+headerImage.src = "https://i.imgur.com/bdimmq2.png";
 headerImage.onload = function () {
     headerCanvas.width = headerImage.width;
     headerCanvas.height = headerImage.height;
@@ -87,7 +87,7 @@ function renderHeaderCanvas() {
 
     const title = document.getElementById("title").value;
     headerCtx.font = "25pt 'MSU1', sans-serif";
-    headerCtx.fillText(title, 10, 36);
+    headerCtx.fillText(title, 25, 36);
 }
 
 function clearHeaderCanvas() {
