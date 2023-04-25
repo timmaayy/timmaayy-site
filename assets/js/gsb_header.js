@@ -1,7 +1,7 @@
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 const image = new Image();
-image.src = "https://i.imgur.com/1A2t2FI.png";
+image.src = "https://i.imgur.com/E8vE80Y.png";
 image.onload = function () {
     canvas.width = image.width;
     canvas.height = image.height;
@@ -86,8 +86,8 @@ function renderHeaderCanvas() {
     headerCtx.drawImage(headerImage, 0, 0);
 
     const title = document.getElementById("title").value;
-    headerCtx.font = "40pt 'MSU1', sans-serif";
-    headerCtx.fillText(title, 10, 44);
+    headerCtx.font = "25pt 'MSU1', sans-serif";
+    headerCtx.fillText(title, 10, 36);
 }
 
 function clearHeaderCanvas() {
