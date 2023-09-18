@@ -188,6 +188,8 @@ function generateLogOutput() {
 \n\
 [b]Total Flight Time:[/b] X Minutes\n\
 \n\
+[b]Airframe Total Time [ooc] /mileage [/ooc]:[/b] answer here\n\
+\n\
 [hr][/hr]\n\
 \n\
 [center][color=#BF0000][size=85][b]ONLY FILL THIS SECTION IF AN EMERGENCY HAPPENED[/b][/size][/color][/center]\n\
