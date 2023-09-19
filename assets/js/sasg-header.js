@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 window.onload = function () {
     renderCanvas();
+    renderHeaderCanvas();
 }
 
 function clearCanvas() {
@@ -65,3 +66,30 @@ function showTime() {
     document.getElementById("time").innerHTML = utcString;
 }
 setInterval(showTime, 1000);
+
+const headerCanvas = document.getElementById("myHeaderCanvas");
+const headerCtx = headerCanvas.getContext("2d");
+const headerImage = new Image();
+headerImage.src = "https://i.imgur.com/nGMk6Ei.png";
+headerImage.onload = function () {
+    headerCanvas.width = headerImage.width;
+    headerCanvas.height = headerImage.height;
+    renderHeaderCanvas();
+};
+
+function renderHeaderCanvas() {
+    headerCtx.clearRect(0, 0, canvas.width, canvas.height);
+    headerCtx.fillStyle = "white";
+    headerCtx.globalAlpha = 1;
+
+    headerCtx.drawImage(headerImage, 0, 0);
+
+    const title = document.getElementById("title").value;
+    headerCtx.font = "25pt 'MSU1', sans-serif";
+    headerCtx.fillText(title, 25, 36);
+}
+
+function clearHeaderCanvas() {
+    // Refresh the page
+    location.reload();
+}

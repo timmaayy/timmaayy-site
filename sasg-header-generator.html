@@ -141,9 +141,9 @@
         <main class="d-flex flex-column flex-grow-1 min-vh-100" style="overflow-y: scroll;">
             <div id="time"></div>
             <div class="mt-4 px-4" id="content">
-                <h2>Page Header Generator</h2><br>
+                <h2>Page Banner Generator</h2><br>
 
-                <form id="headerGenerator">
+                <form id="sasgBannerGenerator">
 
                     <h5>Header Information</h5>
                     <div class="form-group row mb-2">
@@ -170,12 +170,45 @@
                                 onclick="clearCanvas()">Reset</button>
                         </div>
                     </div>
+
                 </form>
+                
                 <div class="form-group row mb-2 mt-2">
                     <p>Right click the image below and "save image as" or "copy image" and then upload it to <a
                             href="https://imgur.com/">Imgur</a> to host.</p>
                     <canvas id="myCanvas" width="500" height="500" class="mt-1"></canvas>
                 </div>
+
+                <br>
+                <h2>Page Header Generator</h2><br>
+
+                <form id="sasgHeaderGenerator">
+
+                    <h5>Header Information</h5>
+                    <div class="form-group row mb-2">
+                        <label for="title" class="col-sm-2 col-form-label text-end">Header Title</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="title" name="title" class="form-control" required
+                                style="width: 400px" placeholder="Header Title" value="Header Title">
+                        </div>
+                    </div>
+
+                    <div class="form-group row my-4">
+                        <div class="col-sm-10 offset-sm-2 d-flex justify-content-start">
+                            <button class="btn btn-primary me-2" type="button"
+                                onclick="renderHeaderCanvas()">Generate</button>
+                            <button class="btn btn-outline-dark" type="button" id="btnClear"
+                                onclick="clearHeaderCanvas()">Reset</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="form-group row mb-2 mt-2">
+                    <p>Right click the image below and "save image as" or "copy image" and then upload it to <a
+                            href="https://imgur.com/">Imgur</a> to host.</p>
+                    <canvas id="myHeaderCanvas" width="500" height="100" class="mt-1"></canvas>
+                </div>
+
                 <div class="form-group row mb-2 mt-5">
                     <p>Page Footer</p>
                     <img src="https://i.imgur.com/mkSnaA8.png" alt="Footer">
