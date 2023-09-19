@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function(event) {
             event.preventDefault();
             renderCanvas();
+            renderHeaderCanvas();
         });
     }
 });
