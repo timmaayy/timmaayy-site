@@ -687,13 +687,12 @@ Go through the checklist below, and mark each section with a [ x ] once complete
 [divbox=#091f62][b][color=white]Theory Session[/color][/b][/divbox]\n\
 [divbox=white]\n\
 " + altitude + " The instructor verifies the student's knowledge of altitude whilst operating an Aircraft. (2000FT city, 750FT outside city, and 500FT or higher above emergency aircrafts).\n\
-" + airspace + " The instructor verifies the student's knowledge of restricted versus prohibited airspace.\n\
+" + airspace + " The instructor verifies the student's knowledge of No Fly Zones and Caution Zones.\n\
 [list]\n\
-[*] Restricted airspaces are off-limit areas that require the submission of an Airspace Authorization Form in order to enter.\n\
-[*] Prohibited airspaces are off-limit areas that should not be entered under any circumstances.\n\
-[*] If either is entered without authorization (i.e. emergency landing), you must submit an incident report.\n\
+[*] Caution Zones are permitted to be entered, but extra caution utilizing your instruments and visuals should be taken as they're hot-spots for takeoffs and landings.\n\
+[*] No Fly Zones are off-limit areas that should not be entered under any circumstances.\n\
+[*] If No Fly Zones are entered without authorization (i.e. emergency landing), you must submit an incident report.\n\
 [/list]\n\
-" + weather + " The instructor verified the student's knowledge of weather conditions.\n\
 \n\
 [/divbox]\n\
 [divbox=#091f62][b][color=white]Pre-Flight Check[/color][/b][/divbox]\n\
