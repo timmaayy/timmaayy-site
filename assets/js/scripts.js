@@ -623,7 +623,7 @@ function setUTCEndTime() {
     document.getElementById('endTime').value = timeStr;
 }
 
-/* Flight Session2 */
+/* Flight Session3 */
 function generateSessionThreeOutput() {
     // Retrieve input values
 
@@ -644,6 +644,8 @@ function generateSessionThreeOutput() {
     const call5 = document.getElementById("call5").value;
     const call6 = document.getElementById("call6").value;
     const call7 = document.getElementById("call7").value;
+    const call8 = document.getElementById("call8").value;
+    const call9 = document.getElementById("call9").value;
     const emergencyLanding = document.getElementById("emergencyLanding").value;
     const emergencyLandingGrade = document.getElementById("emergencyLandingGrade").value;
     const atcCommunication = document.getElementById("atcCommunication").value;
@@ -719,6 +721,8 @@ Go through the checklist below, and mark each section with a [ x ] once complete
 [*] " + call5 + "\n\
 [*] " + call6 + "\n\
 [*] " + call7 + "\n\
+[*] " + call8 + "\n\
+[*] " + call9 + "\n\
 [/list]\n\
 \n\
 [/divbox]\n\
