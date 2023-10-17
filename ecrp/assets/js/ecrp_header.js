@@ -61,14 +61,12 @@ document.addEventListener('DOMContentLoaded', function () {
         button.addEventListener('click', function (event) {
             event.preventDefault();
             renderCanvas();
-            renderHeaderCanvas();
         });
     }
 });
 
 window.onload = function () {
     renderCanvas();
-    renderHeaderCanvas();
 }
 
 function clearCanvas() {
