@@ -2,6 +2,7 @@ const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 const defaultImageUrl = "https://i.imgur.com/V4cimVb.png";
 const xmasImageUrl = "https://i.imgur.com/j21546d.png";
+const halloweenImageUrl = "https://i.imgur.com/QtWSHNj.png";
 const mainTitleInput = document.getElementById("mainTitle");
 const subTitleInput = document.getElementById("subTitle");
 const bannerStyleInput = document.getElementById("bannerStyle");
@@ -28,7 +29,15 @@ function renderCanvas() {
     const mainTitle = mainTitleInput.value.toUpperCase();
     const subTitle = subTitleInput.value.toUpperCase();
     const bannerStyle = bannerStyleInput.value;
-    const imageUrl = (bannerStyle === "XMAS") ? xmasImageUrl : defaultImageUrl;
+    let imageUrl;
+
+    if (bannerStyle === "XMAS") {
+        imageUrl = xmasImageUrl;
+    } else if (bannerStyle === "HALLOWEEN") {
+        imageUrl = halloweenImageUrl;
+    } else {
+        imageUrl = defaultImageUrl;
+    }
 
     const newImage = new Image();
     newImage.onload = function() {

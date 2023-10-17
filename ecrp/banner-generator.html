@@ -36,7 +36,6 @@
 <body>
 
     <main>
-
         <!--GENERATOR CONTENT-->
         <main class="d-flex flex-column flex-grow-1 min-vh-100" style="overflow-y: scroll;">
             <div class="mt-4 px-4" id="content">
@@ -67,6 +66,7 @@
                             <select id="bannerStyle" name="bannerStyle" class="form-select" required
                                 style="width: 400px">
                                 <option value="GEN">General</option>
+                                <option value="HALLOWEEN">Halloween</option>
                                 <option value="XMAS">Christmas</option>
                             </select>
                         </div>
@@ -80,13 +80,15 @@
                                 onclick="clearCanvas()">Reset</button>
                         </div>
                     </div>
+
                 </form>
+
                 <div class="form-group row mb-2 mt-2">
                     <p>Right click the image below and "save image as" or "copy image" and then upload it to <a
                             href="https://imgur.com/">Imgur</a> to host.</p>
                     <canvas id="myCanvas" width="500" height="500" class="mt-1"></canvas>
                 </div>
-                
+
             </div>
             <footer class="footer mt-auto py-3 bg-custom">
                 <div class="b-footer-divider"></div>
