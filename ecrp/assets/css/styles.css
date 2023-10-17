@@ -1,5 +1,10 @@
-
 /* Main Area*/
+
+@font-face {
+    font-family: "Oswald-SemiBold";
+    src: url("assets/fonts/Oswald-SemiBold.ttf") format("truetype");
+}
+
 main {
     background-color: #212529;
     color: #ffffff;
@@ -15,6 +20,12 @@ form {
 #btnClear {
     background-color: #ffffff;
     color: #212529;
+}
+
+h2 {
+    font-family: 'CustomFont', sans-serif;
+    font-weight: bold;
+    padding-bottom: 10px;
 }
 
 h5 {
