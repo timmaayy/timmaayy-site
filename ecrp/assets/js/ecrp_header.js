@@ -9,48 +9,44 @@ image.onload = function () {
 };
 
 function renderCanvas() {
+    // Clear the canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Set common canvas properties
     ctx.fillStyle = "white";
-    ctx.textAlign = "center";
-    ctx.globalAlpha = 1;
-
-    const mainTitle = document.getElementById("mainTitle").value.toUpperCase();
-    const subTitle = document.getElementById("subTitle").value.toUpperCase();;
-    const bannerStyle = document.getElementById("bannerStyle").value;
-
-    // Set common font style and drop shadow properties
     ctx.textAlign = "center";
     ctx.shadowColor = "rgba(0, 0, 0, 1)";
     ctx.shadowBlur = 1;
     ctx.shadowOffsetX = 3;
     ctx.shadowOffsetY = 3;
+    ctx.globalAlpha = 1;
 
+    // Get input values
+    const mainTitle = document.getElementById("mainTitle").value.toUpperCase();
+    const subTitle = document.getElementById("subTitle").value.toUpperCase();
+    const bannerStyle = document.getElementById("bannerStyle").value;
+
+    // Load image based on banner style
+    var imageUrl = "";
     if (bannerStyle === "GEN") {
-        var newImage = new Image();
-        newImage.onload = function() {
-            ctx.drawImage(newImage, 0, 0);
-            ctx.fillStyle = "white";
-            ctx.font = "60pt 'Oswald-SemiBold', sans-serif";
-            ctx.fillText(mainTitle, 1530, 150);
-
-            ctx.font = "30pt 'Oswald-SemiBold', sans-serif";
-            ctx.fillText(subTitle, 1530, 200);
-        };
-        newImage.src = "https://i.imgur.com/V4cimVb.png";
+        imageUrl = "https://i.imgur.com/V4cimVb.png";
     } else if (bannerStyle === "XMAS") {
-        var newImage = new Image();
-        newImage.onload = function() {
-            ctx.drawImage(newImage, 0, 0);
-            ctx.fillStyle = "white";
-            ctx.font = "60pt 'Oswald-SemiBold', sans-serif";
-            ctx.fillText(mainTitle, 1530, 150);
-
-            ctx.font = "30pt 'Oswald-SemiBold', sans-serif";
-            ctx.fillText(subTitle, 1530, 200);
-        };
-        newImage.src = "https://i.imgur.com/3FXqvRr.png";
+        imageUrl = "https://i.imgur.com/3FXqvRr.png";
     }
 
+    // Draw the loaded image
+    var newImage = new Image();
+    newImage.onload = function() {
+        ctx.drawImage(newImage, 0, 0);
+
+        // Set text styles and draw main and sub titles
+        ctx.font = "60pt 'Oswald-SemiBold', sans-serif";
+        ctx.fillText(mainTitle, 1530, 150);
+
+        ctx.font = "30pt 'Oswald-SemiBold', sans-serif";
+        ctx.fillText(subTitle, 1530, 200);
+    };
+    newImage.src = imageUrl;
 }
 
 document.addEventListener('DOMContentLoaded', function () {
