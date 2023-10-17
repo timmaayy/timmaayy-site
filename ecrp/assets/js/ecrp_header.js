@@ -17,38 +17,47 @@ function renderCanvas() {
     ctx.drawImage(image, 0, 0);
 
     const mainTitle = document.getElementById("mainTitle").value.toUpperCase();
-
-    // Set font style
-    ctx.font = "60pt 'Oswald-SemiBold', sans-serif";
-
-    // Set drop shadow properties
-    ctx.shadowColor = "rgba(0, 0, 0, 1)"; // Shadow color (black with 0% opacity)
-    ctx.shadowBlur = 1; // Shadow blur amount
-    ctx.shadowOffsetX = 3; // Horizontal shadow offset
-    ctx.shadowOffsetY = 3; // Vertical shadow offset
-    
-    // Draw text with drop shadow effect
-    ctx.fillText(mainTitle, 1530, 150);
-
     const subTitle = document.getElementById("subTitle").value.toUpperCase();;
+    const bannerStyle = document.getElementById("bannerStyle").value;
 
-    // Set font style
-    ctx.font = "30pt 'Oswald-SemiBold', sans-serif";
+    // Set common font style and drop shadow properties
+    ctx.textAlign = "center";
+    ctx.shadowColor = "rgba(0, 0, 0, 1)";
+    ctx.shadowBlur = 1;
+    ctx.shadowOffsetX = 3;
+    ctx.shadowOffsetY = 3;
 
-    // Set drop shadow properties
-    ctx.shadowColor = "rgba(0, 0, 0, 1)"; // Shadow color (black with 0% opacity)
-    ctx.shadowBlur = 1; // Shadow blur amount
-    ctx.shadowOffsetX = 3; // Horizontal shadow offset
-    ctx.shadowOffsetY = 3; // Vertical shadow offset
+    if (bannerStyle === "GEN") {
 
-    ctx.fillText(subTitle, 1530, 200);
+        image.src = "https://i.imgur.com/V4cimVb.png";
+
+        // Customize for "General" style
+        ctx.fillStyle = "white";
+        ctx.font = "60pt 'Oswald-SemiBold', sans-serif";
+        ctx.fillText(mainTitle, 1530, 150);
+
+        ctx.font = "30pt 'Oswald-SemiBold', sans-serif";
+        ctx.fillText(subTitle, 1530, 200);
+
+    } else if (bannerStyle === "XMAS") {
+
+        image.src = "https://i.imgur.com/3FXqvRr.png";
+
+        // Customize for "Christmas" style
+        ctx.fillStyle = "white";
+        ctx.font = "60pt 'Oswald-SemiBold', sans-serif";
+        ctx.fillText(mainTitle, 1530, 150);
+
+        ctx.font = "30pt 'Oswald-SemiBold', sans-serif";
+        ctx.fillText(subTitle, 1530, 200);
+    }
 
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const button = document.querySelector('button[type="submit"]');
-    if(button) {
-        button.addEventListener('click', function(event) {
+    if (button) {
+        button.addEventListener('click', function (event) {
             event.preventDefault();
             renderCanvas();
             renderHeaderCanvas();
