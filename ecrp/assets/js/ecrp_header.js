@@ -14,8 +14,6 @@ function renderCanvas() {
     ctx.textAlign = "center";
     ctx.globalAlpha = 1;
 
-    ctx.drawImage(image, 0, 0);
-
     const mainTitle = document.getElementById("mainTitle").value.toUpperCase();
     const subTitle = document.getElementById("subTitle").value.toUpperCase();;
     const bannerStyle = document.getElementById("bannerStyle").value;
