@@ -1,75 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="icon" type="image/ico" href="assets/img/timmaayy.png" alt="ECRP Favicon">
     <title>Timmaayy</title>
-
-    <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
     <link href="assets/css/styles.css" rel="stylesheet">
-
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-
-        @font-face {
-            font-family: "Oswald-SemiBold";
-            src: url("assets/fonts/Oswald-SemiBold.ttf") format("truetype");
-        }
-    </style>
-
 </head>
 
 <body>
-
     <main class="d-flex flex-column flex-grow-1 min-vh-100" style="overflow-y: scroll;">
         <div class="mt-4 px-4" id="content">
             <h1 class="text-center">Hello there :)</h1><br>
             <div class="text-center">
-                <img src="assets/img/timmaayy.png" alt="Description of the image" class="mx-auto">
+                <img src="assets/img/timmaayy.png" alt="Timmaayy image" class="mx-auto">
             </div>
         </div>
         <footer class="footer mt-auto py-3 bg-custom">
             <div class="b-footer-divider"></div>
             <div class="container" style="text-align: center;">
-                <span id="footer-text" class="text-muted">Timmaayy</span>
+                <span id="footer-text" class="text-muted">Timmaayy - &copy; <span id="currentYear"></span></span>
             </div>
         </footer>
     </main>
 
-    <!-- JavaScript to get and display the current year -->
+    <script src="assets/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" defer></script>
     <script>
         // Get the current year
         var currentYear = new Date().getFullYear();
 
         // Update the content of the span element with the current year
-        document.getElementById("footer-text").innerText += " - © " + currentYear;
+        document.getElementById("currentYear").innerText = currentYear;
     </script>
-
-</body>
-
-</html>
-
-<script src="assets/js/bootstrap.bundle.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" defer></script>
-
 </body>
 
 </html>
