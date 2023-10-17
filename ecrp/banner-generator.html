@@ -43,31 +43,43 @@
     <main>
         <!--GENERATOR CONTENT-->
         <main class="d-flex flex-column flex-grow-1 min-vh-100" style="overflow-y: auto;">
-            
+
             <div class="mt-4 px-4" id="content">
                 <h2>ECRP BANNER GENERATOR</h2>
 
                 <form id="ecrpBannerGenerator">
 
                     <h5>Banner Information</h5>
-                    <div class="form-group row mb-2">
+                    <div class="form-group row mb-1">
                         <label for="mainTitle" class="col-sm-2 col-form-label text-end">Main Title</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-3">
                             <input type="text" id="mainTitle" name="mainTitle" class="form-control" required
-                                style="width: 400px" placeholder="Main Title" value="Main Title"
-                                aria-label="Main Title Input">
+                                placeholder="Main Title" value="Main Title" aria-label="Main Title Input"
+                                style="width: 400px">
+                        </div>
+                        <label for="mainTitlefontSizeSlider" class="col-sm-1 col-form-label text-end">Font Size</label>
+                        <div class="col-sm-3">
+                            <input type="range" class="form-range" id="mainTitlefontSizeSlider" min="10" max="100"
+                                step="1" value="60">
+                            <span id="mainTitlefontSizeValue">60</span>pt
                         </div>
                     </div>
 
-                    <div class="form-group row mb-2">
+                    <div class="form-group row mb-1">
                         <label for="subTitle" class="col-sm-2 col-form-label text-end">Subtitle</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-3">
                             <input type="text" id="subTitle" name="subTitle" class="form-control" required
-                                style="width: 400px" placeholder="Subtitle" value="Subtitle">
+                                placeholder="Subtitle" value="Subtitle" style="width: 400px">
+                        </div>
+                        <label for="subTitleFontSizeSlider" class="col-sm-1 col-form-label text-end">Font Size</label>
+                        <div class="col-sm-3">
+                            <input type="range" class="form-range" id="subTitleFontSizeSlider" min="10" max="100"
+                                step="1" value="30">
+                            <span id="subTitleFontSizeValue">30</span>pt
                         </div>
                     </div>
 
-                    <div class="form-group row mb-2">
+                    <div class="form-group row mb-1">
                         <label for="bannerStyle" class="col-sm-2 col-form-label text-end">Banner Style</label>
                         <div class="col-sm-10">
                             <select id="bannerStyle" name="bannerStyle" class="form-select" required
@@ -79,7 +91,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row my-4">
+                    <div class="form-group row my-3">
                         <div class="col-sm-10 offset-sm-2 d-flex justify-content-start">
                             <button class="btn btn-primary me-2" type="button" onclick="renderCanvas()"
                                 aria-label="Generate Button">Generate</button>
@@ -90,7 +102,7 @@
 
                 </form>
 
-                <div class="form-group row mb-2 mt-2">
+                <div class="form-group row mb-1 mt-1">
                     <p>Right click the image below and "save image as" or "copy image" and then upload it to <a
                             href="https://imgur.com/" target="_blank">Imgur</a> to host.</p>
                     <canvas id="myCanvas" width="500" height="500" class="mt-1"

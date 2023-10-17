@@ -6,6 +6,13 @@ const halloweenImageUrl = "https://i.imgur.com/QtWSHNj.png";
 const mainTitleInput = document.getElementById("mainTitle");
 const subTitleInput = document.getElementById("subTitle");
 const bannerStyleInput = document.getElementById("bannerStyle");
+const mainTitlefontSizeSlider = document.getElementById('mainTitlefontSizeSlider');
+const subTitleFontSizeSlider = document.getElementById('subTitleFontSizeSlider');
+const mainTitlefontSizeValue = document.getElementById('mainTitlefontSizeValue');
+const subTitleFontSizeValue = document.getElementById('subTitleFontSizeValue');
+
+let mainTitleFontSize = 60; // Default font size for main title
+let subTitleFontSize = 30; // Default font size for subtitle
 
 const image = new Image();
 image.onload = function () {
@@ -27,8 +34,8 @@ function renderCanvas() {
     ctx.shadowOffsetY = 3;
     ctx.globalAlpha = 1;
 
-    const mainTitle = mainTitleInput.value.toUpperCase();
-    const subTitle = subTitleInput.value.toUpperCase();
+    const mainTitleText = mainTitleInput.value.toUpperCase();
+    const subTitleText = subTitleInput.value.toUpperCase();
     const bannerStyle = bannerStyleInput.value;
     let imageUrl;
 
@@ -44,14 +51,35 @@ function renderCanvas() {
     newImage.onload = function() {
         ctx.drawImage(newImage, 0, 0);
 
-        ctx.font = "60pt 'Oswald-SemiBold', sans-serif";
-        ctx.fillText(mainTitle, 1530, 150);
+        ctx.font = `${mainTitleFontSize}pt 'Oswald-SemiBold', sans-serif`;
+        ctx.fillText(mainTitleText, 1530, 150);
 
-        ctx.font = "30pt 'Oswald-SemiBold', sans-serif";
-        ctx.fillText(subTitle, 1530, 200);
+        ctx.font = `${subTitleFontSize}pt 'Oswald-SemiBold', sans-serif`;
+        ctx.fillText(subTitleText, 1530, 200);
     };
     newImage.src = imageUrl;
 }
+
+function updateCanvasOnSliderRelease() {
+    mainTitlefontSizeValue.textContent = mainTitlefontSizeSlider.value;
+    mainTitleFontSize = parseInt(mainTitlefontSizeSlider.value);
+    renderCanvas();
+
+    subTitleFontSizeValue.textContent = subTitleFontSizeSlider.value;
+    subTitleFontSize = parseInt(subTitleFontSizeSlider.value);
+    renderCanvas();
+}
+
+mainTitlefontSizeSlider.addEventListener('input', function() {
+    mainTitlefontSizeValue.textContent = mainTitlefontSizeSlider.value;
+});
+
+subTitleFontSizeSlider.addEventListener('input', function() {
+    subTitleFontSizeValue.textContent = subTitleFontSizeSlider.value;
+});
+
+mainTitlefontSizeSlider.addEventListener('change', updateCanvasOnSliderRelease);
+subTitleFontSizeSlider.addEventListener('change', updateCanvasOnSliderRelease);
 
 document.addEventListener('DOMContentLoaded', function () {
     const button = document.querySelector('button[type="submit"]');
