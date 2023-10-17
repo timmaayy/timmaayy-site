@@ -1,18 +1,22 @@
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
+const defaultImageUrl = "https://i.imgur.com/V4cimVb.png";
+const xmasImageUrl = "https://i.imgur.com/3FXqvRr.png";
+const mainTitleInput = document.getElementById("mainTitle");
+const subTitleInput = document.getElementById("subTitle");
+const bannerStyleInput = document.getElementById("bannerStyle");
+
 const image = new Image();
-image.src = "https://i.imgur.com/V4cimVb.png";
 image.onload = function () {
     canvas.width = image.width;
     canvas.height = image.height;
     renderCanvas();
 };
+image.src = defaultImageUrl;
 
 function renderCanvas() {
-    // Clear the canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Set common canvas properties
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
     ctx.shadowColor = "rgba(0, 0, 0, 1)";
@@ -21,25 +25,15 @@ function renderCanvas() {
     ctx.shadowOffsetY = 3;
     ctx.globalAlpha = 1;
 
-    // Get input values
-    const mainTitle = document.getElementById("mainTitle").value.toUpperCase();
-    const subTitle = document.getElementById("subTitle").value.toUpperCase();
-    const bannerStyle = document.getElementById("bannerStyle").value;
+    const mainTitle = mainTitleInput.value.toUpperCase();
+    const subTitle = subTitleInput.value.toUpperCase();
+    const bannerStyle = bannerStyleInput.value;
+    const imageUrl = (bannerStyle === "XMAS") ? xmasImageUrl : defaultImageUrl;
 
-    // Load image based on banner style
-    var imageUrl = "";
-    if (bannerStyle === "GEN") {
-        imageUrl = "https://i.imgur.com/V4cimVb.png";
-    } else if (bannerStyle === "XMAS") {
-        imageUrl = "https://i.imgur.com/3FXqvRr.png";
-    }
-
-    // Draw the loaded image
-    var newImage = new Image();
+    const newImage = new Image();
     newImage.onload = function() {
         ctx.drawImage(newImage, 0, 0);
 
-        // Set text styles and draw main and sub titles
         ctx.font = "60pt 'Oswald-SemiBold', sans-serif";
         ctx.fillText(mainTitle, 1530, 150);
 
@@ -64,6 +58,5 @@ window.onload = function () {
 }
 
 function clearCanvas() {
-    // Refresh the page
     location.reload();
 }
