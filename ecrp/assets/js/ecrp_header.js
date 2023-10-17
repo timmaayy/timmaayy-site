@@ -13,6 +13,7 @@ image.onload = function () {
     canvas.height = image.height;
     renderCanvas();
 };
+
 image.src = defaultImageUrl;
 
 function renderCanvas() {
