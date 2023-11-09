@@ -47,7 +47,7 @@ function calculateTotal() {
 
         // Display clipboard message
         var clipboardMessage = document.getElementById("clipboardMessage");
-        clipboardMessage.innerText = "(( Copied to clipboard: " + totalPriceString + " ))";
+        clipboardMessage.innerText = "Copied to clipboard: " + totalPriceString;
         clipboardMessage.style.color = "#28a745"; // Set the color to green, you can change it to your preference
     } else {
         // Clear clipboard message if totalPrice is zero
