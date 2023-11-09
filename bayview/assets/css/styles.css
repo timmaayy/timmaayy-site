@@ -1,5 +1,5 @@
 body {
-    background-color: #212121; /* Dark background color */
+    background-color: #0d1826; /* Dark background color */
     color: #fff; /* Light text color */
     font-family: Arial, sans-serif;
 }
@@ -7,7 +7,7 @@ body {
 .container {
     max-width: 400px;
     background-color: #15273e; /* Dark container background color */
-    border: 1px solid #757575; /* Medium border color */
+    border: 1px solid #eeca57; /* Medium border color */
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
