@@ -1,5 +1,4 @@
 window.onload = function () {
-    document.getElementById("labourPrice").value = "0";
     document.getElementById("percentage").value = "0";
     document.getElementById("calculatedLabourPrice").innerText = "$0";
     document.getElementById("discount").innerText = "$0";
