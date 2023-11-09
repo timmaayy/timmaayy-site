@@ -443,8 +443,6 @@ function generateSessionTwoOutput() {
     const instructorDirectionalFlight = document.getElementById("instructorDirectionalFlight").value;
     const instructorFigureEight = document.getElementById("instructorFigureEight").value;
     const instructorHover2 = document.getElementById("instructorHover2").value;
-    const instructorLandingGear = document.getElementById("instructorLandingGear").value;
-    const instructorWaterHover = document.getElementById("instructorWaterHover").value;
     const studentHover = document.getElementById("studentHover").value;
     const studentHoverGrade = document.getElementById("studentHoverGrade").value;
     const studentSHops = document.getElementById("studentSHops").value;
@@ -457,8 +455,6 @@ function generateSessionTwoOutput() {
     const studentDirectionalFlightGrade = document.getElementById("studentDirectionalFlightGrade").value;
     const studentFigureEight = document.getElementById("studentFigureEight").value;
     const studentFigureEightGrade = document.getElementById("studentFigureEightGrade").value;
-    const studentWaterHover = document.getElementById("studentWaterHover").value;
-    const studentWaterHoverGrade = document.getElementById("studentWaterHoverGrade").value;
     const sessionNotes = document.getElementById("sessionNotes").value;
     const behaviour = document.getElementById("behaviour").value;
     const behaviourDetails = document.getElementById("behaviourDetails").value;
@@ -522,8 +518,6 @@ Go through the checklist below, and mark each section with a [ x ] once complete
 " + instructorDirectionalFlight + " The instructor showed the student how to perform directional flight along the LSIA Runways in the shape of an L from start to finish.\n\
 " + instructorFigureEight + " The instructor showed the student how to perform figure-8's with the Frogger between the two poles near Runway 2.\n\
 " + instructorHover2 + " The instructor showed the student how to hover the Frogger above LSIA Helipad One.\n\
-" + instructorLandingGear + " The instructor showed the student how to retract and protract the landing gear on the Swift helicopter.\n\
-" + instructorWaterHover + " The instructor showed the student how to perform a water hover with the Swift helicopter.\n\
 \n\
 [/divbox]\n\
 [divbox=#091f62][b][color=white]Student's Flight[/color][/b][/divbox]\n\
@@ -543,8 +537,6 @@ Go through the checklist below, and mark each section with a [ x ] once complete
 [list=none]GRADE: " + studentDirectionalFlightGrade + "[/list]\n\
 " + studentFigureEight + " The student was able to perform figure-8's with the Frogger between the two poles near Runway 2.\n\
 [list=none]GRADE: " + studentFigureEightGrade + "[/list]\n\
-" + studentWaterHover + " The student was able to perform a steady hover directly on the water with the Swift helicopter.\n\
-[list=none]GRADE: " + studentWaterHoverGrade + "[/list]\n\
 \n\
 [/divbox]\n\
 [divbox=#091f62][b][color=white]Session Notes[/color][/b][/divbox]\n\
