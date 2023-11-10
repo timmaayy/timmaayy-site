@@ -57,5 +57,5 @@ function resetValues() {
 }
 
 function openImage() {
-    window.open('assets/img/phb-zones.png', '_blank');
+    window.open('https://i.imgur.com/sAERgdz.png', '_blank');
 }
