@@ -44,7 +44,6 @@ function calculateTotal() {
     document.getElementById("totalCost").textContent = "$" + totalPrice.toLocaleString();
 }
 
-
 function resetValues() {
     // Reset input values to 0
     document.getElementById("xValue").value = "0";
@@ -57,3 +56,6 @@ function resetValues() {
     document.getElementById("totalCost").innerText = "$0";
 }
 
+function openImage() {
+    window.open('assets/img/phb-zones.png', '_blank');
+}
