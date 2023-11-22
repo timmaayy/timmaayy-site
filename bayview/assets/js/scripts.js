@@ -20,6 +20,13 @@ function calculateTotal() {
         discountPercentage = 0;
     }
 
+    // Ensure discountPercentage is not greater than 100
+    if (discountPercentage > 100) {
+        alert("Discount percentage cannot exceed 100%");
+        document.getElementById("percentage").value = 100; // Set percentage to 100
+        discountPercentage = 100; // Update discountPercentage variable
+    }
+
     var calculatedLabourPrice = userEnteredLabourPrice * 0.15; // 15% of the entered labour price
     var discount = (calculatedLabourPrice * discountPercentage) / 100;
     var totalPrice = calculatedLabourPrice - discount;
@@ -34,17 +41,17 @@ function calculateTotal() {
     document.getElementById("discount").innerText = "$" + discount;
     document.getElementById("totalPrice").innerText = "$" + totalPrice;
 
-    // Display clipboard message only if totalPrice is not zero
-    if (totalPrice !== 0) {
-        // Copy the total price to the clipboard
-        var totalPriceString = "/mechoffer 0 " + totalPrice;
-        var tempInput = document.createElement("input");
-        tempInput.value = totalPriceString;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        document.execCommand("copy");
-        document.body.removeChild(tempInput);
+    // Copy the total price to the clipboard
+    var totalPriceString = "/mechoffer 0 " + totalPrice;
+    var tempInput = document.createElement("input");
+    tempInput.value = totalPriceString;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
 
+    // Display clipboard message only if totalPrice is not zero
+    if (totalPrice !== 0 || discountPercentage == 100) {
         // Display clipboard message
         var clipboardMessage = document.getElementById("clipboardMessage");
         clipboardMessage.innerText = "Copied to clipboard: " + totalPriceString;
