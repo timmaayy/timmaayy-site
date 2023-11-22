@@ -22,9 +22,14 @@ function calculateTotal() {
 
     // Ensure discountPercentage is not greater than 100
     if (discountPercentage > 100) {
-        alert("Discount percentage cannot exceed 100%");
-        document.getElementById("percentage").value = 100; // Set percentage to 100
-        discountPercentage = 100; // Update discountPercentage variable
+        var errorMessage = document.getElementById("errorMessage");
+        errorMessage.innerText = "Discount percentage cannot exceed 100%";
+        errorMessage.style.color = "#ff0000"; // Set the color to red
+        document.getElementById("percentage").value = 0; // Set percentage to 100
+        return
+    } else {
+        // Clear error message if discountPercentage is valid
+        document.getElementById("errorMessage").innerText = "";
     }
 
     var calculatedLabourPrice = userEnteredLabourPrice * 0.15; // 15% of the entered labour price
@@ -72,4 +77,5 @@ function resetValues() {
     document.getElementById("discount").innerText = "$0";
     document.getElementById("totalPrice").innerText = "$0";
     document.getElementById("clipboardMessage").innerText = "";
+    document.getElementById("errorMessage").innerText = "";
 }
