@@ -126,6 +126,18 @@
           cell.appendChild(eventText);
         }
 
+        if (month === 12 && day === 15) {
+          cell.classList.add("event");
+
+          // Create a span element for the text with the desired font size
+          const eventText = document.createElement("span");
+          eventText.style.fontSize = "14px"; // Adjust the font size as needed
+          eventText.innerHTML = "<br>Test";
+
+          // Append the span element to the cell
+          cell.appendChild(eventText);
+        }
+
         if (month === 12 && day === 25) {
           cell.classList.add("event");
 
