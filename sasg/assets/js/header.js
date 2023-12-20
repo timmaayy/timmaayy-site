@@ -1,36 +1,74 @@
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
+const defaultImageUrl = "https://i.imgur.com/XciuRPV.png";
+const mainTitleInput = document.getElementById("mainTitle");
+const subTitleInput = document.getElementById("subTitle");
+const mainTitlefontSizeSlider = document.getElementById('mainTitlefontSizeSlider');
+const subTitleFontSizeSlider = document.getElementById('subTitleFontSizeSlider');
+
+let mainTitleFontSize = 40; // Default font size for main title
+let subTitleFontSize = 23; // Default font size for subtitle
+
 const image = new Image();
-image.src = "https://i.imgur.com/XciuRPV.png";
 image.onload = function () {
     canvas.width = image.width;
     canvas.height = image.height;
     renderCanvas();
 };
 
+image.src = defaultImageUrl;
+
 function renderCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
     ctx.globalAlpha = 1;
 
-    ctx.drawImage(image, 0, 0);
+    const mainTitleText = mainTitleInput.value.toUpperCase();
+    const subTitleText = subTitleInput.value.toUpperCase();
+    let imageUrl;
 
-    const mainTitle = document.getElementById("mainTitle").value;
-    ctx.font = "40pt 'MSU1', sans-serif";
-    ctx.fillText(mainTitle, 885, 97);
+    imageUrl = defaultImageUrl;
 
-    ctx.globalAlpha = 0.5;
-    const subTitle = document.getElementById("subTitle").value;
-    ctx.font = "22.5pt 'MSU1', sans-serif";
-    ctx.fillText(subTitle, 885, 135);
-    ctx.globalAlpha = 1;
+    const newImage = new Image();
+    newImage.onload = function () {
+        ctx.drawImage(newImage, 0, 0);
+
+        ctx.font = `${mainTitleFontSize}pt 'MSU1', sans-serif`;
+        ctx.fillText(mainTitleText, 885, 97);
+
+        ctx.font = `${subTitleFontSize}pt 'MSU1', sans-serif`;
+        ctx.fillText(subTitleText, 885, 135);
+    };
+    newImage.src = imageUrl;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+function updateCanvasOnSliderRelease() {
+    mainTitlefontSizeValue.textContent = mainTitlefontSizeSlider.value;
+    mainTitleFontSize = parseInt(mainTitlefontSizeSlider.value);
+    renderCanvas();
+
+    subTitleFontSizeValue.textContent = subTitleFontSizeSlider.value;
+    subTitleFontSize = parseInt(subTitleFontSizeSlider.value);
+    renderCanvas();
+}
+
+mainTitlefontSizeSlider.addEventListener('input', function () {
+    mainTitlefontSizeValue.textContent = mainTitlefontSizeSlider.value;
+});
+
+subTitleFontSizeSlider.addEventListener('input', function () {
+    subTitleFontSizeValue.textContent = subTitleFontSizeSlider.value;
+});
+
+mainTitlefontSizeSlider.addEventListener('change', updateCanvasOnSliderRelease);
+subTitleFontSizeSlider.addEventListener('change', updateCanvasOnSliderRelease);
+
+document.addEventListener('DOMContentLoaded', function () {
     const button = document.querySelector('button[type="submit"]');
-    if(button) {
-        button.addEventListener('click', function(event) {
+    if (button) {
+        button.addEventListener('click', function (event) {
             event.preventDefault();
             renderCanvas();
         });
@@ -42,26 +80,5 @@ window.onload = function () {
 }
 
 function clearCanvas() {
-    // Refresh the page
     location.reload();
 }
-
-/* UTC Time */
-function showTime() {
-    var date = new Date();
-    date.setUTCHours(date.getUTCHours());
-    var hours = date.getUTCHours();
-    var minutes = date.getUTCMinutes();
-    var seconds = date.getUTCSeconds();
-    var ampm = hours >= 12 ? 'PM' : 'AM';
-    hours = hours % 12;
-    hours = hours ? hours : 12;
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    seconds = seconds < 10 ? '0' + seconds : seconds;
-    var timeString = hours + ':' + minutes + ':' + seconds + ' ' + ampm;
-    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    var dateString = date.toLocaleDateString('en-US', options);
-    var utcString = dateString + ', ' + timeString + ' UTC';
-    document.getElementById("time").innerHTML = utcString;
-}
-setInterval(showTime, 1000);
