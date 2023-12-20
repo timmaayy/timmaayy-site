@@ -38,8 +38,10 @@ function renderCanvas() {
         ctx.font = `${mainTitleFontSize}pt 'MSU1', sans-serif`;
         ctx.fillText(mainTitleText, 885, 97);
 
+        ctx.globalAlpha = 0.5;
         ctx.font = `${subTitleFontSize}pt 'MSU1', sans-serif`;
         ctx.fillText(subTitleText, 885, 135);
+        ctx.globalAlpha = 1;
     };
     newImage.src = imageUrl;
 }
