@@ -113,6 +113,43 @@
 
         //** ----- ADD CALENDAR EVENTS BELOW HERE ----- **//
 
+        // January Events
+        if (month === 1 && day === 1) {
+          cell.classList.add("event");
+
+          // Create a span element for the text with the desired font size
+          const eventText = document.createElement("span");
+          eventText.style.fontSize = "14px"; // Adjust the font size as needed
+          eventText.innerHTML = "<br>Happy New Year!";
+
+          // Append the span element to the cell
+          cell.appendChild(eventText);
+        }
+
+        if (month === 1 && day === 5) {
+          cell.classList.add("event");
+
+          // Create a span element for the text with the desired font size
+          const eventText = document.createElement("span");
+          eventText.style.fontSize = "14px"; // Adjust the font size as needed
+          eventText.innerHTML = "<br>Cox Awards<br>8PM";
+
+          // Append the span element to the cell
+          cell.appendChild(eventText);
+        }
+
+        if (month === 1 && day === 27) {
+          cell.classList.add("event");
+
+          // Create a span element for the text with the desired font size
+          const eventText = document.createElement("span");
+          eventText.style.fontSize = "14px"; // Adjust the font size as needed
+          eventText.innerHTML = "<br>Paleto Go-Kart Race<br>9PM";
+
+          // Append the span element to the cell
+          cell.appendChild(eventText);
+        }
+
         // December Events
         if (month === 12 && day === 10) {
           cell.classList.add("event");
@@ -157,31 +194,6 @@
           const eventText = document.createElement("span");
           eventText.style.fontSize = "14px"; // Adjust the font size as needed
           eventText.innerHTML = "<br>Merry Christmas!";
-
-          // Append the span element to the cell
-          cell.appendChild(eventText);
-        }
-
-        // January Events
-        if (month === 1 && day === 1) {
-          cell.classList.add("event");
-
-          // Create a span element for the text with the desired font size
-          const eventText = document.createElement("span");
-          eventText.style.fontSize = "14px"; // Adjust the font size as needed
-          eventText.innerHTML = "<br>Happy New Year!";
-
-          // Append the span element to the cell
-          cell.appendChild(eventText);
-        }
-
-        if (month === 1 && day === 5) {
-          cell.classList.add("event");
-
-          // Create a span element for the text with the desired font size
-          const eventText = document.createElement("span");
-          eventText.style.fontSize = "14px"; // Adjust the font size as needed
-          eventText.innerHTML = "<br>Cox Awards<br>8PM";
 
           // Append the span element to the cell
           cell.appendChild(eventText);
