@@ -1,246 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Event Calendar</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #15273e;
-    }
-
-    h2 {
-      font-weight: bold;
-      color: #eeca57;
-    }
-
-    .calendar {
-      max-width: 800px;
-      margin: 20px auto;
-    }
-
-    .table {
-      background: url('https://i.imgur.com/J3vvuZA.png');
-      /* Add your image URL here */
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      border: 4px solid #eeca57;
-      /* Set the desired border color for the entire table */
-    }
-
-    .table th,
-    .table td {
-      text-align: center;
-      width: 100px;
-      /* Set a fixed width for each day */
-      height: 105px;
-      /* Set a fixed height for each day */
-      padding: 5px;
-      color: #f2f2f2;
-      font-weight: bold;
-    }
-
-    .table .today {
-      border: 2px solid red;
-      /* Set the desired border color for the today cell */
-    }
-
-    .table .event {
-      background-color: #eeca57;
-      color: #0d1826;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Calendar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin: 0;
+            height: 100vh;
+        }
+        .calendar-container {
+            margin-top: 20px;
+        }
+        .calendar {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 16px;
+            table-layout: fixed;
+        }
+        .calendar th, .calendar td {
+            border: 1px solid #eeca57;
+            color: white;
+            text-align: left;
+            padding: 10px;
+            vertical-align: top;
+            position: relative;
+            height: 175px;
+        }
+        .calendar th {
+            background-color: #15273e;
+            color: white;
+        }
+        .current-day {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .calendar th[colspan="7"] {
+            padding: 10px;
+            height: 50px;
+        }
+        .tooltip {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: nowrap;
+            z-index: 10;
+        }
+        .calendar td:hover .tooltip {
+            display: block;
+        }
+        .event-details {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
 </head>
-
 <body>
+    <div class="calendar-container">
+        <table class="calendar">
+            <thead>
+                <tr>
+                    <th colspan="7">
+                        <span id="currentMonth"></span>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                </tr>
+            </thead>
+            <tbody id="calendarBody">
+            </tbody>
+        </table>
+    </div>
 
-  <div class="container calendar">
-    <h2 id="calendar-title" class="text-center mb-4"></h2>
+    <script>
+        // Function to generate calendar for a given month and year
+        function generateCalendar(month, year) {
+            let today = new Date();
+            let currentMonth = month;
+            let currentYear = year;
+            let daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+            let firstDay = new Date(currentYear, currentMonth, 1).getDay();
+            let calendarBody = document.getElementById("calendarBody");
+            calendarBody.innerHTML = ""; // Clear the previous calendar
 
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th scope="col">Sun</th>
-          <th scope="col">Mon</th>
-          <th scope="col">Tue</th>
-          <th scope="col">Wed</th>
-          <th scope="col">Thu</th>
-          <th scope="col">Fri</th>
-          <th scope="col">Sat</th>
-        </tr>
-      </thead>
-      <tbody id="calendar-body">
-        <!-- Calendar cells will be dynamically generated here using JavaScript -->
-      </tbody>
-    </table>
-  </div>
+            let monthName = new Date(currentYear, currentMonth).toLocaleString('default', { month: 'long' });
+            document.getElementById("currentMonth").innerHTML = monthName + " " + currentYear;
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script>
-    // Function to generate a calendar for a specific month and year
-    function generateCalendar(year, month) {
-      var startDate = new Date(year, month - 1, 1);
-      var endDate = new Date(year, month, 0);
-      var currentMonth = month - 1;
-      var daysInMonth = endDate.getDate();
-      var startDay = startDate.getDay();
+            let date = 1;
+            for (let i = 0; i < 6; i++) {
+                let row = document.createElement("tr");
+                for (let j = 0; j < 7; j++) {
+                    if (i === 0 && j < firstDay) {
+                        let cell = document.createElement("td");
+                        let cellText = document.createTextNode("");
+                        cell.appendChild(cellText);
+                        row.appendChild(cell);
+                    } else if (date > daysInMonth) {
+                        break;
+                    } else {
+                        let cell = document.createElement("td");
+                        if (currentMonth === today.getMonth() && date === today.getDate() && currentYear === today.getFullYear()) {
+                            cell.classList.add("current-day");
+                        }
 
-      var calendarBody = document.getElementById("calendar-body");
-      calendarBody.innerHTML = "";
+                        cell.innerHTML = `<div>${date}</div>`;
+                        
+                        // Load events from localStorage
+                        let events = JSON.parse(localStorage.getItem('events')) || [];
+                        let eventDate = new Date(currentYear, currentMonth, date).toLocaleDateString('en-CA');
+                        events.forEach(event => {
+                            if (event.date === eventDate) {
+                                cell.innerHTML += `<div class="event-details">${event.description}</div>`;
+                            }
+                        });
 
-      var row = document.createElement("tr");
-
-      // Fill in the empty cells before the first day of the month
-      for (var i = 0; i < startDay; i++) {
-        var cell = document.createElement("td");
-        row.appendChild(cell);
-      }
-
-      for (var day = 1; day <= daysInMonth; day++) {
-        var cell = document.createElement("td");
-        cell.textContent = day;
-
-        // Highlight today's date
-        if (year === new Date().getFullYear() && currentMonth === new Date().getMonth() && day === new Date().getDate()) {
-          cell.classList.add("today");
+                        row.appendChild(cell);
+                        date++;
+                    }
+                }
+                calendarBody.appendChild(row);
+            }
         }
 
-        //** ----- ADD CALENDAR EVENTS BELOW HERE ----- **//
-
-        // January Events
-        if (month === 1 && day === 1) {
-          cell.classList.add("event");
-
-          // Create a span element for the text with the desired font size
-          const eventText = document.createElement("span");
-          eventText.style.fontSize = "14px"; // Adjust the font size as needed
-          eventText.innerHTML = "<br>Happy New Year!";
-
-          // Append the span element to the cell
-          cell.appendChild(eventText);
-        }
-
-        if (month === 1 && day === 5) {
-          cell.classList.add("event");
-
-          // Create a span element for the text with the desired font size
-          const eventText = document.createElement("span");
-          eventText.style.fontSize = "14px"; // Adjust the font size as needed
-          eventText.innerHTML = "<br>Cox Awards<br>8PM";
-
-          // Append the span element to the cell
-          cell.appendChild(eventText);
-        }
-
-        if (month === 1 && day === 27) {
-          cell.classList.add("event");
-
-          // Create a span element for the text with the desired font size
-          const eventText = document.createElement("span");
-          eventText.style.fontSize = "14px"; // Adjust the font size as needed
-          eventText.innerHTML = "<br>Paleto Go-Kart Race<br>9PM";
-
-          // Append the span element to the cell
-          cell.appendChild(eventText);
-        }
-
-        // December Events
-        if (month === 12 && day === 10) {
-          cell.classList.add("event");
-
-          // Create a span element for the text with the desired font size
-          const eventText = document.createElement("span");
-          eventText.style.fontSize = "14px"; // Adjust the font size as needed
-          eventText.innerHTML = "<br>Ice Karting Mirror Park 8PM";
-
-          // Append the span element to the cell
-          cell.appendChild(eventText);
-        }
-
-        if (month === 12 && day === 17) {
-          cell.classList.add("event");
-
-          // Create a span element for the text with the desired font size
-          const eventText = document.createElement("span");
-          eventText.style.fontSize = "14px"; // Adjust the font size as needed
-          eventText.innerHTML = "<br>Mistlemas<br>8PM";
-
-          // Append the span element to the cell
-          cell.appendChild(eventText);
-        }
-
-        if (month === 12 && day === 18) {
-          cell.classList.add("event");
-
-          // Create a span element for the text with the desired font size
-          const eventText = document.createElement("span");
-          eventText.style.fontSize = "14px"; // Adjust the font size as needed
-          eventText.innerHTML = "<br>Employee Secret Santa Week";
-
-          // Append the span element to the cell
-          cell.appendChild(eventText);
-        }
-
-        if (month === 12 && day === 25) {
-          cell.classList.add("event");
-
-          // Create a span element for the text with the desired font size
-          const eventText = document.createElement("span");
-          eventText.style.fontSize = "14px"; // Adjust the font size as needed
-          eventText.innerHTML = "<br>Merry Christmas!";
-
-          // Append the span element to the cell
-          cell.appendChild(eventText);
-        }
-
-        if (month === 5&& day === 31) {
-          cell.classList.add("event");
-
-          // Create a span element for the text with the desired font size
-          const eventText = document.createElement("span");
-          eventText.style.fontSize = "14px"; // Adjust the font size as needed
-          eventText.innerHTML = "<br>Treasure Hunt<br>8PM";
-
-          // Append the span element to the cell
-          cell.appendChild(eventText);
-        }
-
-        //** ------------------------------------------- **//
-
-        row.appendChild(cell);
-
-        // Start a new row for each week
-        if ((day + startDay) % 7 === 0 || day === daysInMonth) {
-          calendarBody.appendChild(row);
-          row = document.createElement("tr");
-        }
-      }
-    }
-
-    // Function to update the title with the current month and year
-    function updateTitle(year, month) {
-      const months = [
-        "January", "February", "March", "April",
-        "May", "June", "July", "August",
-        "September", "October", "November", "December"
-      ];
-
-      const monthName = months[month - 1];
-      document.getElementById("calendar-title").textContent = `${monthName} ${year} Events`;
-    }
-
-    // Generate the calendar for December 2023
-    const currentYear = new Date().getFullYear();
-    const currentMonth = new Date().getMonth() + 1; // Months are zero-indexed
-    updateTitle(currentYear, currentMonth);
-    generateCalendar(currentYear, currentMonth);
-  </script>
+        // Call function to generate calendar on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            let today = new Date();
+            generateCalendar(today.getMonth(), today.getFullYear());
+        });
+    </script>
 </body>
-
 </html>

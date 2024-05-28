@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add or Delete Event</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #15273e;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            color: white;
+            margin-top: 0;
+        }
+        .form-container label {
+            color: #eeca57;
+        }
+        .form-container input, .form-container textarea, .form-container select {
+            background-color: white;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+        .form-container button {
+            width: 100%;
+            margin-top: 10px; /* This adds gap */
+            margin-bottom: 10px; /* To maintain consistency, add margin-bottom */
+            padding: 10px;
+            background-color: #eeca57;
+            border: none;
+            color: #15273e;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #d4a947;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add New Event</h2>
+        <form id="eventForm">
+            <div class="form-group">
+                <label for="eventDate">Event Date:</label>
+                <input type="date" class="form-control" id="eventDate" name="eventDate" required>
+            </div>
+            <div class="form-group">
+                <label for="eventDescription">Event Description:</label>
+                <textarea class="form-control" id="eventDescription" name="eventDescription" required></textarea>
+            </div>
+            <button type="submit" class="btn">Add Event</button>
+        </form>
+
+        <h2>Delete Event</h2>
+        <form id="deleteEventForm">
+            <div class="form-group">
+                <label for="eventList">Select Event to Delete:</label>
+                <select class="form-control" id="eventList" name="eventList" required></select>
+            </div>
+            <button type="submit" class="btn">Delete Event</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadEvents();
+        });
+
+        function loadEvents() {
+            const eventList = document.getElementById('eventList');
+            const events = JSON.parse(localStorage.getItem('events')) || [];
+            
+            eventList.innerHTML = ''; // Clear existing options
+            events.forEach((event, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.text = `${event.date}: ${event.description}`;
+                eventList.appendChild(option);
+            });
+        }
+
+        document.getElementById('eventForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const eventDate = document.getElementById('eventDate').value;
+            const eventDescription = document.getElementById('eventDescription').value;
+
+            if (eventDate && eventDescription) {
+                let events = JSON.parse(localStorage.getItem('events')) || [];
+                events.push({ date: eventDate, description: eventDescription });
+                localStorage.setItem('events', JSON.stringify(events));
+
+                alert('Event added successfully!');
+                loadEvents(); // Refresh event list for deletion
+                window.location.href = 'index.html'; // Redirect to the calendar page
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+
+        document.getElementById('deleteEventForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const eventList = document.getElementById('eventList');
+            const selectedIndex = eventList.value;
+
+            if (selectedIndex !== '') {
+                let events = JSON.parse(localStorage.getItem('events')) || [];
+                events.splice(selectedIndex, 1);
+                localStorage.setItem('events', JSON.stringify(events));
+
+                alert('Event deleted successfully!');
+                loadEvents(); // Refresh event list for deletion
+                window.location.href = 'calendar.html'; // Redirect to the calendar page
+            } else {
+                alert('Please select an event to delete.');
+            }
+        });
+    </script>
+</body>
+</html>
