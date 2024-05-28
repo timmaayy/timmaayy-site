@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +21,7 @@
             border-radius: 5px;
             background-color: #15273e;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px; /* Adjust the width as needed */
         }
         .form-container h2 {
             color: white;
@@ -49,7 +51,9 @@
         }
     </style>
     
+
 </head>
+
 <body>
     <div class="form-container">
         <h2>Add New Event</h2>
@@ -76,14 +80,14 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             loadEvents();
         });
 
         function loadEvents() {
             const eventList = document.getElementById('eventList');
             const events = JSON.parse(localStorage.getItem('events')) || [];
-            
+
             eventList.innerHTML = ''; // Clear existing options
             events.forEach((event, index) => {
                 const option = document.createElement('option');
@@ -93,7 +97,7 @@
             });
         }
 
-        document.getElementById('eventForm').addEventListener('submit', function(event) {
+        document.getElementById('eventForm').addEventListener('submit', function (event) {
             event.preventDefault();
             const eventDate = document.getElementById('eventDate').value;
             const eventDescription = document.getElementById('eventDescription').value;
@@ -111,7 +115,7 @@
             }
         });
 
-        document.getElementById('deleteEventForm').addEventListener('submit', function(event) {
+        document.getElementById('deleteEventForm').addEventListener('submit', function (event) {
             event.preventDefault();
             const eventList = document.getElementById('eventList');
             const selectedIndex = eventList.value;
@@ -130,4 +134,5 @@
         });
     </script>
 </body>
+
 </html>
