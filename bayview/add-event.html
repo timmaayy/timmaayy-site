@@ -49,6 +49,18 @@
         .form-container button:hover {
             background-color: #d4a947;
         }
+        .success-message, .error-message {
+            color: white;
+            margin-top: 10px;
+            text-align: center;
+            display: none;
+        }
+        .success-message {
+            background-color: #4CAF50;
+        }
+        .error-message {
+            background-color: #f44336;
+        }
     </style>   
 </head>
 
@@ -65,6 +77,7 @@
                 <textarea class="form-control" id="eventDescription" name="eventDescription" required></textarea>
             </div>
             <button type="submit" class="btn">Add Event</button>
+            <div id="addEventMessage" class="success-message"></div>
         </form>
 
         <h2>Delete Event</h2>
@@ -74,6 +87,7 @@
                 <select class="form-control" id="eventList" name="eventList" required></select>
             </div>
             <button type="submit" class="btn">Delete Event</button>
+            <div id="deleteEventMessage" class="success-message"></div>
         </form>
     </div>
 
@@ -99,16 +113,27 @@
             event.preventDefault();
             const eventDate = document.getElementById('eventDate').value;
             const eventDescription = document.getElementById('eventDescription').value;
+            const addEventMessage = document.getElementById('addEventMessage');
 
             if (eventDate && eventDescription) {
                 let events = JSON.parse(localStorage.getItem('events')) || [];
                 events.push({ date: eventDate, description: eventDescription });
                 localStorage.setItem('events', JSON.stringify(events));
 
-                alert('Event added successfully!');
-                loadEvents(); // Refresh event list for deletion
+                addEventMessage.textContent = 'Event added successfully!';
+                addEventMessage.style.display = 'block';
+
+                // Reset form fields
+                document.getElementById('eventDate').value = "";
+                document.getElementById('eventDescription').value = "";
+
+                // Hide message after 10 seconds
+                setTimeout(function() {
+                    addEventMessage.style.display = 'none';
+                }, 10000);
             } else {
-                alert('Please fill in all fields.');
+                addEventMessage.textContent = 'Please fill in all fields.';
+                addEventMessage.style.display = 'block';
             }
         });
 
@@ -116,16 +141,27 @@
             event.preventDefault();
             const eventList = document.getElementById('eventList');
             const selectedIndex = eventList.value;
+            const deleteEventMessage = document.getElementById('deleteEventMessage');
 
             if (selectedIndex !== '') {
                 let events = JSON.parse(localStorage.getItem('events')) || [];
                 events.splice(selectedIndex, 1);
                 localStorage.setItem('events', JSON.stringify(events));
 
-                alert('Event deleted successfully!');
+                deleteEventMessage.textContent = 'Event deleted successfully!';
+                deleteEventMessage.style.display = 'block';
                 loadEvents(); // Refresh event list for deletion
+
+                // Reset form fields
+                eventList.value = "";
+
+                // Hide message after 10 seconds
+                setTimeout(function() {
+                    deleteEventMessage.style.display = 'none';
+                }, 10000);
             } else {
-                alert('Please select an event to delete.');
+                deleteEventMessage.textContent = 'Please select an event to delete.';
+                deleteEventMessage.style.display = 'block';
             }
         });
     </script>
