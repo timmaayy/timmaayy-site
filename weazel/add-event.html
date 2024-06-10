@@ -14,30 +14,41 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: transparent; /* Set background color to transparent */
+            background-color: transparent;
+            /* Set background color to transparent */
         }
+
         .form-container {
             border: 1px solid #ccc;
             padding: 20px;
             border-radius: 5px;
-            width: 400px; /* Adjust the width as needed */
+            width: 400px;
+            /* Adjust the width as needed */
         }
+
         .form-container h2 {
             color: white;
             margin-top: 0;
         }
+
         .form-container label {
             color: white;
         }
-        .form-container input, .form-container textarea, .form-container select {
+
+        .form-container input,
+        .form-container textarea,
+        .form-container select {
             background-color: white;
             border: 1px solid #ced4da;
             border-radius: 4px;
         }
+
         .form-container button {
             width: 100%;
-            margin-top: 10px; /* This adds gap */
-            margin-bottom: 10px; /* To maintain consistency, add margin-bottom */
+            margin-top: 10px;
+            /* This adds gap */
+            margin-bottom: 10px;
+            /* To maintain consistency, add margin-bottom */
             padding: 10px;
             background-color: #990000;
             border: none;
@@ -45,22 +56,27 @@
             border-radius: 4px;
             cursor: pointer;
         }
+
         .form-container button:hover {
             background-color: #be0000;
         }
-        .success-message, .error-message {
+
+        .success-message,
+        .error-message {
             color: white;
             margin-top: 10px;
             text-align: center;
             display: none;
         }
+
         .success-message {
             background-color: #4CAF50;
         }
+
         .error-message {
             background-color: #f44336;
         }
-    </style>   
+    </style>
 </head>
 
 <body>
@@ -68,12 +84,16 @@
         <h2>Add New Event</h2>
         <form id="eventForm">
             <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <div class="form-group">
                 <label for="eventDate">Event Date:</label>
-                <input type="date" class="form-control" id="eventDate" name="eventDate" required>
+                <input type="date" class="form-control" id="eventDate" name="eventDate">
             </div>
             <div class="form-group">
                 <label for="eventDescription">Event Description:</label>
-                <textarea class="form-control" id="eventDescription" name="eventDescription" required></textarea>
+                <textarea class="form-control" id="eventDescription" name="eventDescription"></textarea>
             </div>
             <button type="submit" class="btn">Add Event</button>
             <div id="addEventMessage" class="success-message"></div>
@@ -82,8 +102,12 @@
         <h2>Delete Event</h2>
         <form id="deleteEventForm">
             <div class="form-group">
+                <label for="passwordDelete">Password:</label>
+                <input type="password" class="form-control" id="passwordDelete" name="passwordDelete">
+            </div>
+            <div class="form-group">
                 <label for="eventList">Select Event to Delete:</label>
-                <select class="form-control" id="eventList" name="eventList" required></select>
+                <select class="form-control" id="eventList" name="eventList"></select>
             </div>
             <button type="submit" class="btn">Delete Event</button>
             <div id="deleteEventMessage" class="success-message"></div>
@@ -91,6 +115,8 @@
     </div>
 
     <script>
+        const masterPassword = "We4zel3v3nts!"; // Change this to your master password
+
         document.addEventListener('DOMContentLoaded', function () {
             loadEvents();
         });
@@ -110,11 +136,18 @@
 
         document.getElementById('eventForm').addEventListener('submit', function (event) {
             event.preventDefault();
+            const password = document.getElementById('password').value;
             const eventDate = document.getElementById('eventDate').value;
             const eventDescription = document.getElementById('eventDescription').value;
             const addEventMessage = document.getElementById('addEventMessage');
 
-            if (eventDate && eventDescription) {
+            if (!password) {
+                addEventMessage.textContent = 'Please enter the password.';
+                addEventMessage.style.display = 'block';
+                return;
+            }
+
+            if (password === masterPassword && eventDate && eventDescription) {
                 let events = JSON.parse(localStorage.getItem('events')) || [];
                 events.push({ date: eventDate, description: eventDescription });
                 localStorage.setItem('events', JSON.stringify(events));
@@ -123,26 +156,34 @@
                 addEventMessage.style.display = 'block';
 
                 // Reset form fields
+                document.getElementById('password').value = "";
                 document.getElementById('eventDate').value = "";
                 document.getElementById('eventDescription').value = "";
 
                 // Hide message after 10 seconds
-                setTimeout(function() {
+                setTimeout(function () {
                     addEventMessage.style.display = 'none';
                 }, 10000);
             } else {
-                addEventMessage.textContent = 'Please fill in all fields.';
+                addEventMessage.textContent = 'Incorrect password or please fill in all fields.';
                 addEventMessage.style.display = 'block';
             }
         });
 
         document.getElementById('deleteEventForm').addEventListener('submit', function (event) {
             event.preventDefault();
+            const passwordDelete = document.getElementById('passwordDelete').value;
             const eventList = document.getElementById('eventList');
             const selectedIndex = eventList.value;
             const deleteEventMessage = document.getElementById('deleteEventMessage');
 
-            if (selectedIndex !== '') {
+            if (!passwordDelete) {
+                deleteEventMessage.textContent = 'Please enter the password.';
+                deleteEventMessage.style.display = 'block';
+                return;
+            }
+
+            if (passwordDelete === masterPassword && selectedIndex !== '') {
                 let events = JSON.parse(localStorage.getItem('events')) || [];
                 events.splice(selectedIndex, 1);
                 localStorage.setItem('events', JSON.stringify(events));
@@ -152,14 +193,15 @@
                 loadEvents(); // Refresh event list for deletion
 
                 // Reset form fields
+                document.getElementById('passwordDelete').value = "";
                 eventList.value = "";
 
                 // Hide message after 10 seconds
-                setTimeout(function() {
+                setTimeout(function () {
                     deleteEventMessage.style.display = 'none';
                 }, 10000);
             } else {
-                deleteEventMessage.textContent = 'Please select an event to delete.';
+                deleteEventMessage.textContent = 'Incorrect password or please select an event to delete.';
                 deleteEventMessage.style.display = 'block';
             }
         });
