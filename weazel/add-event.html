@@ -115,7 +115,7 @@
     </div>
 
     <script>
-        const masterPassword = "We4zel3v3nts!"; // Change this to your master password
+        const masterPassword = "We4zel3v3nts!";
 
         document.addEventListener('DOMContentLoaded', function () {
             loadEvents();
@@ -144,6 +144,12 @@
             if (!password) {
                 addEventMessage.textContent = 'Please enter the password.';
                 addEventMessage.style.display = 'block';
+
+                // Hide message after 10 seconds
+                setTimeout(function () {
+                    addEventMessage.style.display = 'none';
+                }, 10000);
+
                 return;
             }
 
@@ -167,8 +173,14 @@
             } else {
                 addEventMessage.textContent = 'Incorrect password or please fill in all fields.';
                 addEventMessage.style.display = 'block';
+
+                // Hide message after 10 seconds
+                setTimeout(function () {
+                    addEventMessage.style.display = 'none';
+                }, 10000);
             }
         });
+
 
         document.getElementById('deleteEventForm').addEventListener('submit', function (event) {
             event.preventDefault();
@@ -180,6 +192,12 @@
             if (!passwordDelete) {
                 deleteEventMessage.textContent = 'Please enter the password.';
                 deleteEventMessage.style.display = 'block';
+
+                // Hide message after 10 seconds
+                setTimeout(function () {
+                    deleteEventMessage.style.display = 'none';
+                }, 10000);
+
                 return;
             }
 
@@ -203,9 +221,11 @@
             } else {
                 deleteEventMessage.textContent = 'Incorrect password or please select an event to delete.';
                 deleteEventMessage.style.display = 'block';
+
+                // Hide message after 10 seconds
+                setTimeout(function () {
+                    deleteEventMessage.style.display = 'none';
+                }, 10000);
             }
         });
     </script>
-</body>
-
-</html>
