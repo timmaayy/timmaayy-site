@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Calendar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin: 0;
+            height: 100vh;
+        }
+        .calendar-container {
+            margin-top: 20px;
+        }
+        .calendar {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 16px;
+            table-layout: fixed;
+        }
+        .calendar th, .calendar td {
+            border: 1px solid #ffffff;
+            color: white;
+            text-align: left;
+            padding: 10px;
+            vertical-align: top;
+            position: relative;
+            height: 175px;
+        }
+        .calendar th {
+            color: white;
+        }
+        .current-day {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .calendar th[colspan="7"] {
+            padding: 10px;
+            height: 20px;
+            font-size: 20px;
+            text-align: center;
+        }
+        .tooltip {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: nowrap;
+            z-index: 10;
+        }
+        .calendar td:hover .tooltip {
+            display: block;
+        }
+        .event-details {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar-container">
+        <table class="calendar">
+            <thead>
+                <tr>
+                    <th colspan="7">
+                        <span id="currentMonth"></span>
+                    </th>
+                </tr>
+                <tr>
+                    <th>Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                </tr>
+            </thead>
+            <tbody id="calendarBody">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Function to generate calendar for a given month and year
+        function generateCalendar(month, year) {
+            let today = new Date();
+            let currentMonth = month;
+            let currentYear = year;
+            let daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+            let firstDay = new Date(currentYear, currentMonth, 1).getDay();
+            let calendarBody = document.getElementById("calendarBody");
+            calendarBody.innerHTML = ""; // Clear the previous calendar
+
+            let monthName = new Date(currentYear, currentMonth).toLocaleString('default', { month: 'long' });
+            document.getElementById("currentMonth").innerHTML = monthName + " " + currentYear;
+
+            let date = 1;
+            for (let i = 0; i < 6; i++) {
+                let row = document.createElement("tr");
+                for (let j = 0; j < 7; j++) {
+                    if (i === 0 && j < firstDay) {
+                        let cell = document.createElement("td");
+                        let cellText = document.createTextNode("");
+                        cell.appendChild(cellText);
+                        row.appendChild(cell);
+                    } else if (date > daysInMonth) {
+                        break;
+                    } else {
+                        let cell = document.createElement("td");
+                        if (currentMonth === today.getMonth() && date === today.getDate() && currentYear === today.getFullYear()) {
+                            cell.classList.add("current-day");
+                        }
+
+                        cell.innerHTML = `<div>${date}</div>`;
+                        
+                        // Load events from localStorage
+                        let events = JSON.parse(localStorage.getItem('events')) || [];
+                        let eventDate = new Date(currentYear, currentMonth, date).toLocaleDateString('en-CA');
+                        events.forEach(event => {
+                            if (event.date === eventDate) {
+                                cell.innerHTML += `<div class="event-details">${event.description}</div>`;
+                            }
+                        });
+
+                        row.appendChild(cell);
+                        date++;
+                    }
+                }
+                calendarBody.appendChild(row);
+            }
+        }
+
+        // Call function to generate calendar on page load
+        document.addEventListener("DOMContentLoaded", function() {
+            let today = new Date();
+            generateCalendar(today.getMonth(), today.getFullYear());
+        });
+    </script>
+</body>
+</html>

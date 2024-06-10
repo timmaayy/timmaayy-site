@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add or Delete Event</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: transparent; /* Set background color to transparent */
+        }
+        .form-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            width: 400px; /* Adjust the width as needed */
+        }
+        .form-container h2 {
+            color: white;
+            margin-top: 0;
+        }
+        .form-container label {
+            color: white;
+        }
+        .form-container input, .form-container textarea, .form-container select {
+            background-color: white;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+        .form-container button {
+            width: 100%;
+            margin-top: 10px; /* This adds gap */
+            margin-bottom: 10px; /* To maintain consistency, add margin-bottom */
+            padding: 10px;
+            background-color: #990000;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #be0000;
+        }
+        .success-message, .error-message {
+            color: white;
+            margin-top: 10px;
+            text-align: center;
+            display: none;
+        }
+        .success-message {
+            background-color: #4CAF50;
+        }
+        .error-message {
+            background-color: #f44336;
+        }
+    </style>   
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Add New Event</h2>
+        <form id="eventForm">
+            <div class="form-group">
+                <label for="eventDate">Event Date:</label>
+                <input type="date" class="form-control" id="eventDate" name="eventDate" required>
+            </div>
+            <div class="form-group">
+                <label for="eventDescription">Event Description:</label>
+                <textarea class="form-control" id="eventDescription" name="eventDescription" required></textarea>
+            </div>
+            <button type="submit" class="btn">Add Event</button>
+            <div id="addEventMessage" class="success-message"></div>
+        </form>
+
+        <h2>Delete Event</h2>
+        <form id="deleteEventForm">
+            <div class="form-group">
+                <label for="eventList">Select Event to Delete:</label>
+                <select class="form-control" id="eventList" name="eventList" required></select>
+            </div>
+            <button type="submit" class="btn">Delete Event</button>
+            <div id="deleteEventMessage" class="success-message"></div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            loadEvents();
+        });
+
+        function loadEvents() {
+            const eventList = document.getElementById('eventList');
+            const events = JSON.parse(localStorage.getItem('events')) || [];
+
+            eventList.innerHTML = ''; // Clear existing options
+            events.forEach((event, index) => {
+                const option = document.createElement('option');
+                option.value = index;
+                option.text = `${event.date}: ${event.description}`;
+                eventList.appendChild(option);
+            });
+        }
+
+        document.getElementById('eventForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const eventDate = document.getElementById('eventDate').value;
+            const eventDescription = document.getElementById('eventDescription').value;
+            const addEventMessage = document.getElementById('addEventMessage');
+
+            if (eventDate && eventDescription) {
+                let events = JSON.parse(localStorage.getItem('events')) || [];
+                events.push({ date: eventDate, description: eventDescription });
+                localStorage.setItem('events', JSON.stringify(events));
+
+                addEventMessage.textContent = 'Event added successfully!';
+                addEventMessage.style.display = 'block';
+
+                // Reset form fields
+                document.getElementById('eventDate').value = "";
+                document.getElementById('eventDescription').value = "";
+
+                // Hide message after 10 seconds
+                setTimeout(function() {
+                    addEventMessage.style.display = 'none';
+                }, 10000);
+            } else {
+                addEventMessage.textContent = 'Please fill in all fields.';
+                addEventMessage.style.display = 'block';
+            }
+        });
+
+        document.getElementById('deleteEventForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const eventList = document.getElementById('eventList');
+            const selectedIndex = eventList.value;
+            const deleteEventMessage = document.getElementById('deleteEventMessage');
+
+            if (selectedIndex !== '') {
+                let events = JSON.parse(localStorage.getItem('events')) || [];
+                events.splice(selectedIndex, 1);
+                localStorage.setItem('events', JSON.stringify(events));
+
+                deleteEventMessage.textContent = 'Event deleted successfully!';
+                deleteEventMessage.style.display = 'block';
+                loadEvents(); // Refresh event list for deletion
+
+                // Reset form fields
+                eventList.value = "";
+
+                // Hide message after 10 seconds
+                setTimeout(function() {
+                    deleteEventMessage.style.display = 'none';
+                }, 10000);
+            } else {
+                deleteEventMessage.textContent = 'Please select an event to delete.';
+                deleteEventMessage.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>
