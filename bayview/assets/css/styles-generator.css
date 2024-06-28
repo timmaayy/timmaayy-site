@@ -1,13 +1,8 @@
 /* Main Area*/
 
 @font-face {
-    font-family: "Oswald-SemiBold";
-    src: url("assets/fonts/Oswald-SemiBold.ttf") format("truetype");
-}
-
-@font-face {
     font-family: "Americorps";
-    src: url("assets/fonts/americorps.ttf") format("truetype");
+    src: url("../fonts/americorps.ttf") format("truetype");
 }
 
 main {
