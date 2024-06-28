@@ -3,9 +3,10 @@ const ctx = canvas.getContext("2d");
 const defaultImageUrl = "https://i.imgur.com/VzuXnj6.png";
 const nameInput = document.getElementById("name");
 const rankInput = document.getElementById("rank");
-const divisions1Input = document.getElementById("divisions1");
-const divisions2Input = document.getElementById("divisions2");
-const divisions3Input = document.getElementById("divisions3");
+const divisions1Input = document.getElementById("line1");
+const divisions2Input = document.getElementById("line2");
+const divisions3Input = document.getElementById("line3");
+const divisions4Input = document.getElementById("line4");
 
 let nameFontSize = 24; // Default font size for main title
 let rankFontSize = 18; // Default font size for rank
@@ -32,31 +33,38 @@ function renderCanvas() {
 
     const nameText = nameInput.value.toUpperCase();
     const rankText = rankInput.value.toUpperCase();
-    const fullText = `${nameText} | ${rankText}`;
     const divisions1Text = divisions1Input.value.toUpperCase();
     const divisions2Text = divisions2Input.value.toUpperCase();
     const divisions3Text = divisions3Input.value.toUpperCase();
+    const divisions4Text = divisions4Input.value.toUpperCase();
+    const fullText = `${nameText} | ${rankText}`;
+    const line1Text = `${divisions1Text}    ${divisions2Text}`;
+    const line2Text = `${divisions3Text}    ${divisions4Text}`;
 
     ctx.drawImage(image, 0, 0);
 
     // Render the name and rank on one line separated by a |
     ctx.font = `20pt 'MSU1', sans-serif`;
+    ctx.fillStyle = "#white";
     ctx.fillText(fullText, 340, 171);
 
     ctx.fillStyle = "#eeca57";
-    ctx.font = `12pt MSU1, sans-serif`;
-    ctx.fillText(divisions1Text, 340, 210);
-    
-    ctx.fillStyle = "#eeca57";
-    ctx.font = `12pt MSU1, sans-serif`;
-    ctx.fillText(divisions2Text, 340, 230);
-    
-    ctx.fillStyle = "#eeca57";
-    ctx.font = `12pt MSU1, sans-serif`;
-    ctx.fillText(divisions3Text, 340, 250);
+    ctx.font = `12pt 'MSU1', sans-serif`;
+    ctx.fillText(line1Text, 340, 210);
+
+    ctx.fillText(line2Text, 340, 230);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    // Update canvas when inputs change
+    nameInput.addEventListener('input', renderCanvas);
+    rankInput.addEventListener('input', renderCanvas);
+    divisions1Input.addEventListener('input', renderCanvas);
+    divisions2Input.addEventListener('input', renderCanvas);
+    divisions3Input.addEventListener('input', renderCanvas);
+    divisions4Input.addEventListener('input', renderCanvas);
+
+    // Optional: Update canvas on form submit (if needed)
     const button = document.querySelector('button[type="submit"]');
     if (button) {
         button.addEventListener('click', function (event) {
