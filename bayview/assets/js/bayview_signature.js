@@ -51,7 +51,6 @@ function renderCanvas() {
     ctx.fillStyle = "#eeca57";
     ctx.font = `12pt 'MSU1', sans-serif`;
     ctx.fillText(line1Text, 340, 210);
-
     ctx.fillText(line2Text, 340, 230);
 }
 
