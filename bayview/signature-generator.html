@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="icon" type="image/ico" href="assets/img/bayview.png" alt="Bayview Favicon">
+    <title>ECRP Banner Generator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/styles-generator.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        label {
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <main>
+        <!--GENERATOR CONTENT-->
+        <main class="d-flex flex-column flex-grow-1 min-vh-100" style="overflow-y: auto;">
+
+            <div class="mt-4 px-4" id="content">
+                <h2>BAYVIEW SIGNATURE GENERATOR</h2>
+
+                <form id="bayviewSignatureGenerator">
+
+                    <div class="form-group row mb-1">
+                        <label for="name" class="col-sm-2 col-form-label text-end">Name</label>
+                        <div class="col-sm-3">
+                            <input type="text" id="name" name="name" class="form-control" required placeholder="Name"
+                                value="Tyrone Cox" style="width: 600px">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-1">
+                        <label for="rank" class="col-sm-2 col-form-label text-end">Rank</label>
+                        <div class="col-sm-3">
+                            <input type="text" id="rank" name="rank" class="form-control" required placeholder="rank"
+                                value="Best Owner" style="width: 600px">
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-1">
+                        <label for="divisions1" class="col-sm-2 col-form-label text-end">Divisions</label>
+                        <div class="col-sm-3">
+                            <input type="text" id="divisions1" name="divisions1" class="form-control" required
+                                placeholder="divisions1" value="The Best     High Command" style="width: 600px">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-1">
+                        <label for="divisions2" class="col-sm-2 col-form-label text-end"></label>
+                        <div class="col-sm-3">
+                            <input type="text" id="divisions2" name="divisions2" class="form-control" required
+                                placeholder="divisions2" value="Training Division     Trainer" style="width: 600px">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-1">
+                        <label for="divisions3" class="col-sm-2 col-form-label text-end"></label>
+                        <div class="col-sm-3">
+                            <input type="text" id="divisions3" name="divisions3" class="form-control" required
+                                placeholder="divisions3" value="Human Resources     HR Assistant" style="width: 600px">
+                        </div>
+                    </div>
+
+                    <div class="form-group row my-3">
+                        <div class="col-sm-10 offset-sm-2 d-flex justify-content-start">
+                            <button class="btn btn-primary me-2" type="button" onclick="renderCanvas()"
+                                aria-label="Generate Button">Generate</button>
+                            <button class="btn btn-outline-dark" type="button" id="btnClear" onclick="clearCanvas()"
+                                aria-label="Reset Button">Reset</button>
+                        </div>
+                    </div>
+
+                </form>
+
+                <div class="form-group row mb-1 mt-1">
+                    <p>Right click the image below and "save image as" or "copy image" and then upload it to <a
+                            href="https://imgur.com/" target="_blank">Imgur</a> to host.</p>
+                    <canvas id="myCanvas" width="500" height="100" class="mt-1"
+                        aria-label="Generated Banner Preview Image"></canvas>
+                </div>
+
+            </div>
+
+            <footer class="footer mt-auto py-3 bg-custom">
+                <div class="b-footer-divider"></div>
+                <div class="container" style="text-align: center;">
+                    <span class="text-muted">For any issues or inquiries, please contact timmaayy on Discord</span>
+                </div>
+            </footer>
+
+        </main>
+
+    </main>
+
+    <script src="assets/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" defer></script>
+    <script src="assets/js/ecrp_header.js" defer></script>
+
+</body>
+
+</html>
