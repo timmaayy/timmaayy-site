@@ -79,5 +79,15 @@ window.onload = function () {
 }
 
 function clearCanvas() {
-    location.reload();
+    // Reset input values
+    nameInput.value = 'Tyrone Cox';
+    rankInput.value = 'Owner';
+    divisions1Input.value = 'Human Resources - HR Assistant';
+    divisions2Input.value = 'Training - Trainer';
+    divisions3Input.value = 'Public Relations - Event Coordinator';
+    divisions4Input.value = 'Aviation - Aircraft Mechanic';
+
+    // Render canvas with cleared values
+    renderCanvas();
 }
+
