@@ -22,11 +22,11 @@ function renderCanvas() {
     ctx.drawImage(image, 0, 0);
 
     // Name and rank text
-    ctx.font = `20pt 'MSU1', sans-serif`;
+    ctx.font = `30pt 'MSU1', sans-serif`;
     ctx.fillStyle = "#eeca57";
-    ctx.fillText(`${nameText}`, 355, 116);
+    ctx.fillText(`${nameText}`, 355, 122);
     ctx.fillStyle = "#15273e";
-    ctx.fillText(`${rankText}`, 355, 162);
+    ctx.fillText(`${rankText}`, 355, 168);
 
     // Division lines text
     ctx.font = `12pt 'MSU1', sans-serif`;
