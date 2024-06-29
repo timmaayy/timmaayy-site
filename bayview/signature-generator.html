@@ -9,6 +9,12 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="assets/css/styles-generator.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for adding gap between forms */
+        .form-gap {
+            margin-top: 20px; /* Adjust as needed */
+        }
+    </style>
 </head>
 <body>
     <main class="d-flex flex-column flex-grow-1 min-vh-100 overflow-auto">
@@ -71,10 +77,15 @@
                     </div>
                 </div>
             </form>
-            <div class="form-group row mb-1 mt-1">
-                <p>Right click the image below and "save image as" or "copy image" and then upload it to <a href="https://imgur.com/" target="_blank">Imgur</a> to host.</p>
-                <canvas id="myCanvas" width="1158" height="337" class="mt-1" aria-label="Generated Banner Preview Image"></canvas>
-            </div>
+            
+            <div class="form-gap"></div> <!-- Gap between forms -->
+            
+            <form id="canvasForm">
+                <div class="form-group row mb-1 mt-1">
+                    <p>Right click the image below and "save image as" or "copy image" and then upload it to <a href="https://imgur.com/" target="_blank">Imgur</a> to host.</p>
+                    <canvas id="myCanvas" width="1493" height="255" class="mt-1" aria-label="Generated Banner Preview Image"></canvas>
+                </div>
+            </form>
         </div>
         <footer class="footer mt-auto py-3 bg-custom">
             <div class="b-footer-divider"></div>

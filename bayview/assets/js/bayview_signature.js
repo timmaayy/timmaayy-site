@@ -1,6 +1,6 @@
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
-const defaultImageUrl = "https://i.imgur.com/VzuXnj6.png";
+const defaultImageUrl = "https://i.imgur.com/wyMU8Tp.png";
 const inputs = ["name", "rank", "line1", "line2", "line3", "line4"].map(id => document.getElementById(id));
 
 const image = new Image();
@@ -9,12 +9,7 @@ image.src = defaultImageUrl;
 
 function renderCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "white";
     ctx.textAlign = "left";
-    ctx.shadowColor = "rgba(0, 0, 0, 0.1)";
-    ctx.shadowBlur = 0.5;
-    ctx.shadowOffsetX = 2;
-    ctx.shadowOffsetY = 2;
 
     const [nameInput, rankInput, divisions1Input, divisions2Input, divisions3Input, divisions4Input] = inputs;
     const nameText = nameInput.value.toUpperCase();
@@ -26,14 +21,18 @@ function renderCanvas() {
 
     ctx.drawImage(image, 0, 0);
 
+    // Name and rank text
     ctx.font = `20pt 'MSU1', sans-serif`;
-    ctx.fillStyle = "#ffffff";
-    ctx.fillText(`${nameText} | ${rankText}`, 340, 171);
-
     ctx.fillStyle = "#eeca57";
+    ctx.fillText(`${nameText}`, 355, 116);
+    ctx.fillStyle = "#15273e";
+    ctx.fillText(`${rankText}`, 355, 162);
+
+    // Division lines text
     ctx.font = `12pt 'MSU1', sans-serif`;
-    ctx.fillText(`${divisions1Text}    ${divisions2Text}`, 340, 210);
-    ctx.fillText(`${divisions3Text}    ${divisions4Text}`, 340, 230);
+    ctx.fillStyle = "#eeca57";
+    ctx.fillText(`${divisions1Text}    ${divisions2Text}`, 355, 195);
+    ctx.fillText(`${divisions3Text}    ${divisions4Text}`, 355, 215);
 }
 
 inputs.forEach(input => input.addEventListener('input', renderCanvas));
