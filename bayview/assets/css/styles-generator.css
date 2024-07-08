@@ -4,6 +4,11 @@
     src: url("../fonts/americorps.ttf") format("truetype");
 }
 
+@font-face {
+    font-family: "MSU1";
+    src: url("./assets/fonts/MSU1.ttf") format("truetype");
+}
+
 main {
     background-color: #15273e;
     color: #ffffff;
