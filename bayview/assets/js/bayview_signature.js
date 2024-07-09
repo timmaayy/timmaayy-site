@@ -1,6 +1,6 @@
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
-const defaultImageUrl = "https://i.imgur.com/wyMU8Tp.png";
+const defaultImageUrl = "https://i.imgur.com/3JqA5S2.png";
 const inputs = ["name", "rank", "line1", "line2", "line3", "line4"].map(id => document.getElementById(id));
 
 const image = new Image();
@@ -23,16 +23,40 @@ function renderCanvas() {
 
     // Name and rank text
     ctx.font = `28pt 'MSU1', sans-serif`;
+    // First text with fill and stroke
     ctx.fillStyle = "#eeca57";
     ctx.fillText(`${nameText}`, 355, 122);
+
+    // Set the stroke color to grey and the line width to thin for the first text
+    ctx.strokeStyle = "#black";  // Adjust the grey color as needed
+    ctx.lineWidth = 0.5;  // Thin stroke
+
+    // Apply the stroke to the first text
+    ctx.strokeText(`${nameText}`, 355, 122);
+
+    // Second text with fill and stroke
     ctx.fillStyle = "#15273e";
     ctx.fillText(`${rankText}`, 355, 167);
 
+    // Set the stroke color to grey and the line width to thin for the second text
+    ctx.strokeStyle = "#black";  // Adjust the grey color as needed
+    ctx.lineWidth = 0.5;  // Thin stroke
+
+    // Apply the stroke to the second text
+    ctx.strokeText(`${rankText}`, 355, 167);
+
     // Division lines text
     ctx.font = `12pt 'MSU1', sans-serif`;
+    // Text Fill
     ctx.fillStyle = "#eeca57";
     ctx.fillText(`${divisions1Text}    ${divisions2Text}`, 355, 195);
     ctx.fillText(`${divisions3Text}    ${divisions4Text}`, 355, 215);
+
+    // Text Stroke
+    ctx.strokeStyle = "#black";
+    ctx.lineWidth = 0.5;
+    ctx.strokeText(`${divisions1Text}    ${divisions2Text}`, 355, 195);
+    ctx.strokeText(`${divisions3Text}    ${divisions4Text}`, 355, 215);
 }
 
 inputs.forEach(input => input.addEventListener('input', renderCanvas));
