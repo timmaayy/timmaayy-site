@@ -196,18 +196,17 @@
 
                     <div class="form-group row my-4">
                         <div class="col-sm-10 offset-sm-2 d-flex justify-content-start">
-                            <button class="btn btn-primary me-2" type="button"
-                                onclick="renderCanvas()">Generate</button>
-                            <button class="btn btn-outline-dark" type="button" id="btnClear"
-                                onclick="clearCanvas()">Reset</button>
+                            <button class="btn btn-primary me-2" type="button" onclick="renderCanvas()">Generate</button>
+                            <button class="btn btn-outline-dark me-2" type="button" id="btnClear" onclick="clearCanvas()">Reset</button>
+                            <button id="downloadBtn" class="btn btn-success ms-4" type="button">Download</button>
                         </div>
-                    </div>
+                    </div>                    
+                   
                 </form>
                 <div class="form-group row mb-2 mt-2">
                     <p>Right click the image below and "save image as" or "copy image" and then upload it to <a href="https://imgur.com/">Imgur</a> to host.</p>
                     <div class="d-inline-block">
                         <canvas id="myCanvas" width="500" height="500" class="mt-1 mb-3"></canvas>
-                        <button id="downloadBtn" class="btn btn-success mt-3 d-block" type="button">Download Header</button>
                     </div>
                 </div>
                               
