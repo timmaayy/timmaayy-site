@@ -205,3 +205,12 @@ h5 {
     border-color: rgb(60, 65, 68);
     box-shadow: none;
 }
+
+#downloadBtn {
+    padding: 5px 10px;
+    /* Reduces the padding to make the button smaller */
+    font-size: 12px;
+    /* Reduces the font size */
+    width: auto;
+    /* Allows the button width to be adjusted based on its content */
+}

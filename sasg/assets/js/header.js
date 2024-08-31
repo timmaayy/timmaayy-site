@@ -1,6 +1,6 @@
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
-const defaultImageUrl = "https://i.imgur.com/XciuRPV.png";
+const defaultImageUrl = "https://i.imgur.com/XciuRPV.png"; // Ensure this image allows cross-origin access
 const mainTitleInput = document.getElementById("mainTitle");
 const subTitleInput = document.getElementById("subTitle");
 const mainTitlefontSizeSlider = document.getElementById('mainTitlefontSizeSlider');
@@ -10,6 +10,9 @@ let mainTitleFontSize = 40; // Default font size for main title
 let subTitleFontSize = 23; // Default font size for subtitle
 
 const image = new Image();
+// Set the crossOrigin attribute to allow cross-origin access
+image.crossOrigin = "anonymous";
+
 image.onload = function () {
     canvas.width = image.width;
     canvas.height = image.height;
@@ -17,6 +20,14 @@ image.onload = function () {
 };
 
 image.src = defaultImageUrl;
+
+document.getElementById('downloadBtn').addEventListener('click', function () {
+    const link = document.createElement('a');
+    link.download = 'saaa-header.png';
+    // Ensure the canvas is not tainted by cross-origin images
+    link.href = canvas.toDataURL();
+    link.click();
+});
 
 function renderCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -32,6 +43,8 @@ function renderCanvas() {
     imageUrl = defaultImageUrl;
 
     const newImage = new Image();
+    // Set the crossOrigin attribute here as well
+    newImage.crossOrigin = "anonymous";
     newImage.onload = function () {
         ctx.drawImage(newImage, 0, 0);
 
