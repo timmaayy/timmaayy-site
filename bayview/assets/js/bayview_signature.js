@@ -1,6 +1,6 @@
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
-const defaultImageUrl = "https://i.imgur.com/PhHNxrF.png";
+const defaultImageUrl = "https://i.imgur.com/3bVjqQK.png";
 const inputs = ["name", "rank", "line1", "line2", "line3", "line4"].map(id => document.getElementById(id));
 
 const image = new Image();
@@ -22,21 +22,24 @@ function renderCanvas() {
     ctx.drawImage(image, 0, 0);
 
     // Name and rank text
-    ctx.font = `28pt 'MSU1', sans-serif`;
+    ctx.font = `34pt 'AmeriCorps', sans-serif`;
     // First text with fill and stroke
-    ctx.fillStyle = "#eeca57";
-    ctx.fillText(`${nameText}`, 330, 96);
+    ctx.fillStyle = "white";
+    ctx.fillText(`${nameText}`, 375, 65);
 
+    ctx.font = `24pt 'AmeriCorps', sans-serif`;
     // Second text with fill and stroke
-    ctx.fillStyle = "#15273e";
-    ctx.fillText(`${rankText}`, 330, 141);
+    ctx.fillStyle = "white";
+    ctx.fillText(`${rankText}`, 375, 95);
 
     // Division lines text
+    ctx.globalAlpha = 0.7;
     ctx.font = `14pt 'MSU1', sans-serif`;
     // Text Fill
-    ctx.fillStyle = "#eeca57";
-    ctx.fillText(`${divisions1Text}    ${divisions2Text}`, 330, 168);
-    ctx.fillText(`${divisions3Text}    ${divisions4Text}`, 330, 190);
+    ctx.fillStyle = "white";
+    ctx.fillText(`${divisions1Text}    ${divisions2Text}`, 375, 133);
+    ctx.fillText(`${divisions3Text}    ${divisions4Text}`, 375, 157);
+    ctx.globalAlpha = 1;
 }
 
 inputs.forEach(input => input.addEventListener('input', renderCanvas));
