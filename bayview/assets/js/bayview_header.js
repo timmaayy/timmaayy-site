@@ -95,12 +95,12 @@ function updateCanvasOnSliderRelease() {
 }
 
 mainTitleFontSizeSlider.addEventListener('input', () => {
-    document.getElementById('mainTitleFontSizeSlider').textContent = mainTitleFontSizeSlider.value;
+    document.getElementById('mainTitleFontSizeValue').textContent = mainTitleFontSizeSlider.value;
     updateCanvasOnSliderRelease(); // Update canvas in real-time
 });
 
 subTitleFontSizeSlider.addEventListener('input', () => {
-    document.getElementById('subTitleFontSizeSlider').textContent = subTitleFontSizeSlider.value;
+    document.getElementById('subTitleFontSizeValue').textContent = subTitleFontSizeSlider.value;
     updateCanvasOnSliderRelease(); // Update canvas in real-time
 });
 
@@ -121,16 +121,18 @@ function clearBannerCanvas() {
     // Reset input fields to their default values
     mainTitleInput.value = defaultMainTitle;
     subTitleInput.value = defaultSubTitle;
+
+    // Reset font sizes to their default values
     mainTitleFontSize = 40;
     subTitleFontSize = 20;
 
     // Reset sliders to their default values
-    mainTitleFontSizeSlider.value = 40;
-    subTitleFontSizeSlider.value = 20;
+    mainTitleFontSizeSlider.value = mainTitleFontSize;
+    subTitleFontSizeSlider.value = subTitleFontSize;
 
     // Update the displayed slider values
-    document.getElementById('mainTitleFontSizeSlider').textContent = 40;
-    document.getElementById('subTitleFontSizeSlider').textContent = 20;
+    document.getElementById('mainTitleFontSizeValue').textContent = mainTitleFontSize;
+    document.getElementById('subTitleFontSizeValue').textContent = subTitleFontSize;
 
     // Re-render canvas with default settings
     renderBannerCanvas();

@@ -6,17 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="assets/img/bayview.png" type="image/ico">
     <title>Bayview Signature Generator</title>
-    
+
     <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Custom styles for this template -->
     <link href="assets/css/styles-generator.css" rel="stylesheet">
 
     <style>
         /* Custom CSS for adding gap between forms */
         .form-gap {
-            margin-top: 20px; /* Adjust as needed */
+            margin-top: 20px;
+            /* Adjust as needed */
         }
     </style>
 </head>
@@ -38,9 +39,9 @@
                     </div>
                     <label for="mainTitleFontSizeSlider" class="col-sm-2 col-form-label text-end">Font Size</label>
                     <div class="col-sm-3">
-                        <input type="range" class="form-range" id="mainTitleFontSizeSlider" min="10" max="100"
-                            step="1" value="40">
-                        <span id="mainTitleFontSizeSlider">40</span>pt
+                        <input type="range" class="form-range" id="mainTitleFontSizeSlider" min="10" max="100" step="1"
+                            value="40">
+                        <span id="mainTitleFontSizeValue">40</span>pt
                     </div>
                 </div>
 
@@ -52,23 +53,27 @@
                     </div>
                     <label for="subTitleFontSizeSlider" class="col-sm-2 col-form-label text-end">Font Size</label>
                     <div class="col-sm-3">
-                        <input type="range" class="form-range" id="subTitleFontSizeSlider" min="10" max="100"
-                            step="1" value="23">
-                        <span id="subTitleFontSizeSlider">20</span>pt
+                        <input type="range" class="form-range" id="subTitleFontSizeSlider" min="10" max="100" step="1"
+                            value="20">
+                        <span id="subTitleFontSizeValue">20</span>pt
                     </div>
                 </div>
 
                 <div class="form-group row my-4">
                     <div class="col-sm-10 offset-sm-2 d-flex justify-content-start">
-                        <button class="btn btn-primary me-2" type="button" onclick="renderBannerCanvas()">Generate</button>
-                        <button class="btn btn-outline-dark me-2" type="button" id="btnClear" onclick="clearBannerCanvas()">Reset</button>
+                        <button class="btn btn-primary me-2" type="button"
+                            onclick="renderBannerCanvas()">Generate</button>
+                        <button class="btn btn-outline-dark me-2" type="button" id="btnClear"
+                            onclick="clearBannerCanvas()">Reset</button>
                         <button id="bannerDownloadBtn" class="btn btn-success ms-4" type="button">Download</button>
                     </div>
                 </div>
 
                 <div class="form-group row mb-1 mt-1">
-                    <p>Right-click the image below and "save image as" or "copy image" and then upload it to <a href="https://imgur.com/" target="_blank">Imgur</a> to host.</p>
-                    <canvas id="myCanvas" width="1493" height="255" class="mt-1" aria-label="Generated Banner Preview Image"></canvas>
+                    <p>Right-click the image below and "save image as" or "copy image" and then upload it to <a
+                            href="https://imgur.com/" target="_blank">Imgur</a> to host.</p>
+                    <canvas id="myCanvas" width="1493" height="255" class="mt-1"
+                        aria-label="Generated Banner Preview Image"></canvas>
                 </div>
             </form>
 
@@ -88,15 +93,19 @@
 
                 <div class="form-group row my-4">
                     <div class="col-sm-10 offset-sm-2 d-flex justify-content-start">
-                        <button class="btn btn-primary me-2" type="button" onclick="renderHeaderCanvas()">Generate</button>
-                        <button class="btn btn-outline-dark me-2" type="button" id="btnClear" onclick="clearHeaderCanvas()">Reset</button>
+                        <button class="btn btn-primary me-2" type="button"
+                            onclick="renderHeaderCanvas()">Generate</button>
+                        <button class="btn btn-outline-dark me-2" type="button" id="btnClear"
+                            onclick="clearHeaderCanvas()">Reset</button>
                         <button id="headerDownloadBtn" class="btn btn-success ms-4" type="button">Download</button>
                     </div>
                 </div>
 
                 <div class="form-group row mb-1 mt-1">
-                    <p>Right-click the image below and "save image as" or "copy image" and then upload it to <a href="https://imgur.com/" target="_blank">Imgur</a> to host.</p>
-                    <canvas id="myHeaderCanvas" width="1493" height="255" class="mt-1" aria-label="Generated Header Preview Image"></canvas>
+                    <p>Right-click the image below and "save image as" or "copy image" and then upload it to <a
+                            href="https://imgur.com/" target="_blank">Imgur</a> to host.</p>
+                    <canvas id="myHeaderCanvas" width="1493" height="255" class="mt-1"
+                        aria-label="Generated Header Preview Image"></canvas>
                 </div>
             </form>
         </div>
