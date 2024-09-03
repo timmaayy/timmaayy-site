@@ -1,119 +1,151 @@
-const canvas = document.getElementById("myCanvas");
-const ctx = canvas.getContext("2d");
-const defaultImageUrl = "https://i.imgur.com/0dmf1zu.png"; // Ensure this image allows cross-origin access
+// Canvas and context setup
+const bannerCanvas = document.getElementById("myCanvas");
+const ctx = bannerCanvas.getContext("2d");
+const headerCanvas = document.getElementById("myHeaderCanvas");
+const headerCtx = headerCanvas.getContext("2d");
+
+// Form elements
 const mainTitleInput = document.getElementById("mainTitle");
 const subTitleInput = document.getElementById("subTitle");
-const mainTitlefontSizeSlider = document.getElementById('mainTitlefontSizeSlider');
-const subTitleFontSizeSlider = document.getElementById('subTitleFontSizeSlider');
+const mainTitleFontSizeSlider = document.getElementById("mainTitleFontSizeSlider");
+const subTitleFontSizeSlider = document.getElementById("subTitleFontSizeSlider");
+const headerTitleInput = document.getElementById("headerTitle");
 
-// Store the default values for main title and subtitle
-const defaultMainTitle = mainTitleInput.value; // Default main title text
-const defaultSubTitle = subTitleInput.value;   // Default subtitle text
+// Default values
+const defaultMainTitle = mainTitleInput.value;
+const defaultSubTitle = subTitleInput.value;
+const defaultHeaderTitle = headerTitleInput.value;
+let mainTitleFontSize = 40;
+let subTitleFontSize = 20;
 
-let mainTitleFontSize = 40; // Default font size for main title
-let subTitleFontSize = 20; // Default font size for subtitle
+// Image setup
+const bannerImage = new Image();
+bannerImage.crossOrigin = "anonymous";
+bannerImage.src = "https://i.imgur.com/0dmf1zu.png";
 
-const image = new Image();
-// Set the crossOrigin attribute to allow cross-origin access
-image.crossOrigin = "anonymous";
+const headerImage = new Image();
+headerImage.crossOrigin = "anonymous";
+headerImage.src = "https://i.imgur.com/YMJOsrF.png";
 
-image.onload = function () {
-    canvas.width = image.width;
-    canvas.height = image.height;
-    renderCanvas();
+// Image load events
+bannerImage.onload = () => {
+    bannerCanvas.width = bannerImage.width;
+    bannerCanvas.height = bannerImage.height;
+    renderBannerCanvas();
 };
 
-image.src = defaultImageUrl;
+headerImage.onload = () => {
+    headerCanvas.width = headerImage.width;
+    headerCanvas.height = headerImage.height;
+    renderHeaderCanvas();
+};
 
-document.getElementById('downloadBtn').addEventListener('click', function () {
+// Download button events
+document.getElementById('bannerDownloadBtn').addEventListener('click', () => {
     const link = document.createElement('a');
-    link.download = 'bayview-header.png';
-    // Ensure the canvas is not tainted by cross-origin images
-    link.href = canvas.toDataURL();
+    link.download = 'bayview-banner.png';
+    link.href = bannerCanvas.toDataURL();
     link.click();
 });
 
-function renderCanvas() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+document.getElementById('headerDownloadBtn').addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.download = 'bayview-header.png';
+    link.href = headerCanvas.toDataURL();
+    link.click();
+});
 
-    ctx.fillStyle = "white";
-    ctx.textAlign = "center";
-    ctx.globalAlpha = 1;
+// Render canvas functions
+function renderBannerCanvas() {
+    ctx.clearRect(0, 0, bannerCanvas.width, bannerCanvas.height);
 
     const mainTitleText = mainTitleInput.value.toUpperCase();
     const subTitleText = subTitleInput.value.toUpperCase();
-    let imageUrl;
 
-    imageUrl = defaultImageUrl;
+    ctx.drawImage(bannerImage, 0, 0);
 
-    const newImage = new Image();
-    // Set the crossOrigin attribute here as well
-    newImage.crossOrigin = "anonymous";
-    newImage.onload = function () {
-        ctx.drawImage(newImage, 0, 0);
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.font = `${mainTitleFontSize}pt 'Americorps', sans-serif`;
+    ctx.fillText(mainTitleText, bannerCanvas.width / 2, 83);
 
-        ctx.font = `${mainTitleFontSize}pt 'Americorps', sans-serif`;
-        ctx.fillText(mainTitleText, 885, 83);
-
-        ctx.globalAlpha = 0.7;
-        ctx.font = `${subTitleFontSize}pt 'Americorps', sans-serif`;
-        ctx.fillText(subTitleText, 885, 116);
-        ctx.globalAlpha = 1;
-    };
-    newImage.src = imageUrl;
+    ctx.globalAlpha = 0.7;
+    ctx.font = `${subTitleFontSize}pt 'Americorps', sans-serif`;
+    ctx.fillText(subTitleText, bannerCanvas.width / 2, 116);
+    ctx.globalAlpha = 1;
 }
 
+function renderHeaderCanvas() {
+    headerCtx.clearRect(0, 0, headerCanvas.width, headerCanvas.height);
+
+    headerCtx.drawImage(headerImage, 0, 0);
+
+    headerCtx.fillStyle = "white";
+    headerCtx.globalAlpha = 1;
+    headerCtx.font = "30pt 'Americorps', sans-serif";
+    headerCtx.fillText(headerTitleInput.value, 25, 32);
+}
+
+// Slider update functions
 function updateCanvasOnSliderRelease() {
-    mainTitlefontSizeValue.textContent = mainTitlefontSizeSlider.value;
-    mainTitleFontSize = parseInt(mainTitlefontSizeSlider.value);
-    renderCanvas();
-
-    subTitleFontSizeValue.textContent = subTitleFontSizeSlider.value;
+    mainTitleFontSize = parseInt(mainTitleFontSizeSlider.value);
     subTitleFontSize = parseInt(subTitleFontSizeSlider.value);
-    renderCanvas();
+
+    renderBannerCanvas();
 }
 
-mainTitlefontSizeSlider.addEventListener('input', function () {
-    mainTitlefontSizeValue.textContent = mainTitlefontSizeSlider.value;
+mainTitleFontSizeSlider.addEventListener('input', () => {
+    document.getElementById('mainTitleFontSizeSlider').textContent = mainTitleFontSizeSlider.value;
+    updateCanvasOnSliderRelease(); // Update canvas in real-time
 });
 
-subTitleFontSizeSlider.addEventListener('input', function () {
-    subTitleFontSizeValue.textContent = subTitleFontSizeSlider.value;
+subTitleFontSizeSlider.addEventListener('input', () => {
+    document.getElementById('subTitleFontSizeSlider').textContent = subTitleFontSizeSlider.value;
+    updateCanvasOnSliderRelease(); // Update canvas in real-time
 });
 
-mainTitlefontSizeSlider.addEventListener('change', updateCanvasOnSliderRelease);
-subTitleFontSizeSlider.addEventListener('change', updateCanvasOnSliderRelease);
-
-document.addEventListener('DOMContentLoaded', function () {
-    const button = document.querySelector('button[type="submit"]');
-    if (button) {
-        button.addEventListener('click', function (event) {
+// DOM Content Loaded
+document.addEventListener('DOMContentLoaded', () => {
+    const submitButton = document.querySelector('button[type="submit"]');
+    if (submitButton) {
+        submitButton.addEventListener('click', (event) => {
             event.preventDefault();
-            renderCanvas();
+            renderBannerCanvas();
+            renderHeaderCanvas();
         });
     }
 });
 
-window.onload = function () {
-    renderCanvas();
-}
-
-function clearCanvas() {
+// Clear canvas functions
+function clearBannerCanvas() {
     // Reset input fields to their default values
-    mainTitleInput.value = defaultMainTitle; // Reset to the initial main title
-    subTitleInput.value = defaultSubTitle;   // Reset to the initial subtitle
-    mainTitleFontSize = 40; // Reset to default font size for main title
-    subTitleFontSize = 20; // Reset to default font size for subtitle
-    
+    mainTitleInput.value = defaultMainTitle;
+    subTitleInput.value = defaultSubTitle;
+    mainTitleFontSize = 40;
+    subTitleFontSize = 20;
+
     // Reset sliders to their default values
-    mainTitlefontSizeSlider.value = 40;
+    mainTitleFontSizeSlider.value = 40;
     subTitleFontSizeSlider.value = 20;
 
     // Update the displayed slider values
-    mainTitlefontSizeValue.textContent = 40;
-    subTitleFontSizeValue.textContent = 20;
+    document.getElementById('mainTitleFontSizeSlider').textContent = 40;
+    document.getElementById('subTitleFontSizeSlider').textContent = 20;
 
-    // Clear the canvas and re-render with the default image and default text
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    renderCanvas(); // Re-render the canvas with default settings
+    // Re-render canvas with default settings
+    renderBannerCanvas();
 }
+
+function clearHeaderCanvas() {
+    // Reset header title input to its default value
+    headerTitleInput.value = defaultHeaderTitle;
+
+    // Re-render header canvas with default settings
+    renderHeaderCanvas();
+}
+
+// Initialize canvas on window load
+window.onload = () => {
+    renderBannerCanvas();
+    renderHeaderCanvas(); // Ensure header canvas is rendered if needed
+};
