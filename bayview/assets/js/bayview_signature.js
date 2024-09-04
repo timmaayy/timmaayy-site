@@ -23,19 +23,16 @@ function renderCanvas() {
 
     // Name and rank text
     ctx.font = `40pt 'AmeriCorps', sans-serif`;
-    // First text with fill and stroke
     ctx.fillStyle = "white";
     ctx.fillText(`${nameText}`, 400, 85);
 
     ctx.font = `30pt 'AmeriCorps', sans-serif`;
-    // Second text with fill and stroke
     ctx.fillStyle = "white";
     ctx.fillText(`${rankText}`, 400, 120);
 
     // Division lines text
     ctx.globalAlpha = 0.7;
     ctx.font = `16pt 'MSU1', sans-serif`;
-    // Text Fill
     ctx.fillStyle = "white";
     ctx.fillText(`${divisions1Text}    ${divisions2Text}`, 400, 170);
     ctx.fillText(`${divisions3Text}    ${divisions4Text}`, 400, 195);
@@ -54,4 +51,7 @@ function clearCanvas() {
     renderCanvas();
 }
 
-window.onload = renderCanvas;
+// Ensure fonts are loaded before rendering the canvas
+document.fonts.ready.then(renderCanvas);
+
+window.onload = clearCanvas;
