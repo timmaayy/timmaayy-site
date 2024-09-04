@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="assets/img/bayview.png" type="image/ico">
+    <title>Bayview Signature Generator</title>
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="assets/css/styles-generator.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for adding gap between forms */
+        .form-gap {
+            margin-top: 20px; /* Adjust as needed */
+        }
+
+        @font-face {
+            font-family: "MSU1";
+            src: url("./assets/fonts/MSU1.ttf") format("truetype");
+        }
+    </style>
+</head>
+<body>
+    <main class="d-flex flex-column flex-grow-1 min-vh-100 overflow-auto">
+        <div class="mt-4 px-4" id="content">
+            <h2>BAYVIEW SIGNATURE GENERATOR</h2>
+            <form id="bayviewSignatureGenerator">
+                <div class="form-group row mb-1">
+                    <label for="name" class="col-sm-2 col-form-label text-end">Name</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="name" name="name" class="form-control" required placeholder="Name" value="Tyrone Cox" style="width: 600px">
+                    </div>
+                </div>
+                <div class="form-group row mb-1">
+                    <label for="rank" class="col-sm-2 col-form-label text-end">Rank</label>
+                    <div class="col-sm-3">
+                        <select id="rank" name="rank" class="form-control" required style="width: 600px;">
+                            <option value="Owner">Owner</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Assistant Manager">Assistant Manager</option>
+                            <option value="Supervisor">Supervisor</option>
+                            <option value="Assistant Supervisor">Assistant Supervisor</option>
+                            <option value="Consultant">Consultant</option>
+                            <option value="Lead Mechanic">Lead Mechanic</option>
+                            <option value="Senior Mechanic">Senior Mechanic</option>
+                            <option value="Mechanic">Mechanic</option>
+                            <option value="Junior Mechanic">Junior Mechanic</option>
+                            <option value="Trainee Mechanic">Trainee Mechanic</option>
+                            <option value="Probationary Trainee">Probationary Trainee</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row mb-1">
+                    <label for="line1" class="col-sm-2 col-form-label text-end">Divisions</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="line1" name="line1" class="form-control" required placeholder="Division - Position" value="Human Resources - HR Assistant" style="width: 600px">
+                    </div>
+                </div>
+                <div class="form-group row mb-1">
+                    <label for="line2" class="col-sm-2 col-form-label text-end"></label>
+                    <div class="col-sm-3">
+                        <input type="text" id="line2" name="line2" class="form-control" required placeholder="Division - Position" value="Training - Trainer" style="width: 600px">
+                    </div>
+                </div>
+                <div class="form-group row mb-1">
+                    <label for="line3" class="col-sm-2 col-form-label text-end"></label>
+                    <div class="col-sm-3">
+                        <input type="text" id="line3" name="line3" class="form-control" required placeholder="Division - Position" value="Public Relations - Event Coordinator" style="width: 600px">
+                    </div>
+                </div>
+                <div class="form-group row mb-1">
+                    <label for="line4" class="col-sm-2 col-form-label text-end"></label>
+                    <div class="col-sm-3">
+                        <input type="text" id="line4" name="line4" class="form-control" required placeholder="Division - Position" value="Aviation - Aircraft Mechanic" style="width: 600px">
+                    </div>
+                </div>
+                <div class="form-group row my-3">
+                    <div class="col-sm-10 offset-sm-2 d-flex justify-content-start">
+                        <button class="btn btn-primary me-2" type="button" onclick="renderCanvas()" aria-label="Generate Button">Generate</button>
+                        <button class="btn btn-outline-dark" type="button" id="btnClear" onclick="clearCanvas()" aria-label="Reset Button">Reset</button>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="form-gap"></div> <!-- Gap between forms -->
+            
+            <form id="canvasForm">
+                <div class="form-group row mb-1 mt-1">
+                    <p>Right click the image below and "save image as" or "copy image" and then upload it to <a href="https://imgur.com/" target="_blank">Imgur</a> to host.</p>
+                    <canvas id="myCanvas" width="1493" height="255" class="mt-1" aria-label="Generated Banner Preview Image"></canvas>
+                </div>
+            </form>
+        </div>
+    </main>
+    <script src="assets/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" defer></script>
+    <script src="assets/js/bayview_signature.js" defer></script>
+</body>
+</html>
