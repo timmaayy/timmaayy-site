@@ -1,6 +1,6 @@
 // Canvas and context setup
-const bannerCanvas = document.getElementById("myCanvas");
-const ctx = bannerCanvas.getContext("2d");
+const bannerCanvas = document.getElementById("myBannerCanvas");
+const bannerCtx = bannerCanvas.getContext("2d");
 const headerCanvas = document.getElementById("myHeaderCanvas");
 const headerCtx = headerCanvas.getContext("2d");
 
@@ -57,22 +57,22 @@ document.getElementById('headerDownloadBtn').addEventListener('click', () => {
 
 // Render canvas functions
 function renderBannerCanvas() {
-    ctx.clearRect(0, 0, bannerCanvas.width, bannerCanvas.height);
+    bannerCtx.clearRect(0, 0, bannerCanvas.width, bannerCanvas.height);
 
     const mainTitleText = mainTitleInput.value.toUpperCase();
     const subTitleText = subTitleInput.value.toUpperCase();
 
-    ctx.drawImage(bannerImage, 0, 0);
+    bannerCtx.drawImage(bannerImage, 0, 0);
 
-    ctx.fillStyle = "white";
-    ctx.textAlign = "center";
-    ctx.font = `${mainTitleFontSize}pt 'Americorps', sans-serif`;
-    ctx.fillText(mainTitleText, bannerCanvas.width / 2, 83);
+    bannerCtx.fillStyle = "white";
+    bannerCtx.textAlign = "center";
+    bannerCtx.font = `${mainTitleFontSize}pt 'Americorps', sans-serif`;
+    bannerCtx.fillText(mainTitleText, bannerCanvas.width / 2, 83);
 
-    ctx.globalAlpha = 0.7;
-    ctx.font = `${subTitleFontSize}pt 'Americorps', sans-serif`;
-    ctx.fillText(subTitleText, bannerCanvas.width / 2, 116);
-    ctx.globalAlpha = 1;
+    bannerCtx.globalAlpha = 0.7;
+    bannerCtx.font = `${subTitleFontSize}pt 'Americorps', sans-serif`;
+    bannerCtx.fillText(subTitleText, bannerCanvas.width / 2, 116);
+    bannerCtx.globalAlpha = 1;
 }
 
 function renderHeaderCanvas() {
