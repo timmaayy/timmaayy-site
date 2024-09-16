@@ -67,11 +67,11 @@ function renderBannerCanvas() {
     bannerCtx.fillStyle = "white";
     bannerCtx.textAlign = "center";
     bannerCtx.font = `${mainTitleFontSize}pt 'Americorps', sans-serif`;
-    bannerCtx.fillText(mainTitleText, bannerCanvas.width / 2, 83);
+    bannerCtx.fillText(mainTitleText, bannerCanvas.width / 1.7, 83);
 
     bannerCtx.globalAlpha = 0.7;
     bannerCtx.font = `${subTitleFontSize}pt 'Americorps', sans-serif`;
-    bannerCtx.fillText(subTitleText, bannerCanvas.width / 2, 116);
+    bannerCtx.fillText(subTitleText, bannerCanvas.width / 1.7, 116);
     bannerCtx.globalAlpha = 1;
 }
 
