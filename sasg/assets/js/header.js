@@ -1,6 +1,6 @@
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
-const defaultImageUrl = "https://i.imgur.com/XciuRPV.png"; // Ensure this image allows cross-origin access
+const defaultImageUrl = "https://i.imgur.com/qXiNHBz.png"; // Ensure this image allows cross-origin access
 const mainTitleInput = document.getElementById("mainTitle");
 const subTitleInput = document.getElementById("subTitle");
 const mainTitlefontSizeSlider = document.getElementById('mainTitlefontSizeSlider');
@@ -23,7 +23,9 @@ image.src = defaultImageUrl;
 
 document.getElementById('downloadBtn').addEventListener('click', function () {
     const link = document.createElement('a');
-    link.download = 'saaa-header.png';
+    // Replace spaces with underscores and make the title lowercase
+    const sanitizedTitle = mainTitleInput.value.replace(/\s+/g, '_').toLowerCase();
+    link.download = sanitizedTitle + '_saaa_header.png';
     // Ensure the canvas is not tainted by cross-origin images
     link.href = canvas.toDataURL();
     link.click();
