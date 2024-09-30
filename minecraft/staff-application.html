@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Staff Application Form - Minecraft Server</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font: Minecraft style -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #87ceeb; /* Sky blue */
+      font-family: 'Press Start 2P', cursive; /* Pixelated font */
+      color: #333;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    .form-container {
+      background-color: #8fbf73; /* Grass block green */
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+      border: 5px solid #594f3b; /* Dirt block brown */
+    }
+    .form-container h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: white;
+      text-shadow: 2px 2px 4px #000;
+    }
+    .form-group label {
+      font-weight: bold;
+      color: white;
+      text-shadow: 1px 1px 3px #000;
+    }
+    .form-group input, 
+    .form-group textarea, 
+    .form-group select {
+      background-color: #d1c0a8; /* Dirt block color */
+      border: 2px solid #594f3b; /* Dirt block border */
+      border-radius: 5px;
+      color: #333;
+      font-family: 'Press Start 2P', cursive;
+    }
+    .form-group textarea {
+      resize: none;
+    }
+    .submit-btn {
+      background-color: #28a745;
+      color: white;
+      width: 100%;
+      border-radius: 5px;
+      padding: 10px;
+      font-size: 18px;
+      font-family: 'Press Start 2P', cursive;
+      text-shadow: 2px 2px 4px #000;
+    }
+    .submit-btn:hover {
+      background-color: #218838;
+    }
+    .form-container {
+      background-image: url('https://i.imgur.com/MYHmG9F.png'); /* Grass block texture */
+      background-size: cover;
+    }
+    .success-message {
+      display: none;
+      background-color: #28a745;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="form-container">
+          <h1>Staff Application Form</h1>
+          <form id="staffApplicationForm">
+            <div class="form-group">
+              <label for="username">Minecraft Username</label>
+              <input type="text" class="form-control" name="username" id="username" placeholder="Enter your Minecraft username" required>
+            </div>
+            <div class="form-group">
+              <label for="position">Position Applying For</label>
+              <input type="text" class="form-control" name="position" id="position" placeholder="What position are you applying for?" required>
+            </div>
+            <div class="form-group">
+              <label for="experience">Experience</label>
+              <textarea class="form-control" name="experience" id="experience" rows="5" placeholder="Describe your experience in Minecraft and relevant server management" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="availability">Availability</label>
+              <textarea class="form-control" name="availability" id="availability" rows="2" placeholder="When are you available to moderate the server?" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit Application</button>
+          </form>
+          <div class="success-message" id="successMessage">Submission Successful!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (Optional) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JS for handling form submission -->
+  <script>
+    const form = document.getElementById('staffApplicationForm');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent the default form submission behavior
+
+      // Redirect to the specified YouTube video
+      window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&pp=ygUJcmljayByb2xs';
+
+      // Clear the form after submission
+      form.reset();
+    });
+  </script>
+</body>
+</html>
