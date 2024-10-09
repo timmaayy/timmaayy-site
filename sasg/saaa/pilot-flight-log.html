@@ -193,43 +193,6 @@
                     <h5>Certificate Information</h5>
 
                     <div class="form-group row mb-2">
-                        <label for="studentPilot" class="col-lg-2 col-sm-2 col-form-label text-end">Student Pilot</label>
-                        <div class="col-lg-4 col-sm-10">
-                            <select id="studentPilot" name="studentPilot" class="form-select" required
-                                style="width: 400px" onchange="toggleQuestion('studentPilot')">
-                                <option value="Yes">Yes</option>
-                                <option value="[ ]Student Pilot - Fixed Wing | Rotary Wing" selected>No</option>
-                            </select>
-                            <small id="studentPilotHelp" class="form-text text-muted">Please select whether the pilot is
-                                a student.</small>
-                        </div>
-                        <div class="col-lg-6 col-sm-12" id="additionalQuestion1" style="display: none;">
-                            <div class="row">
-                                <div class="col-sm-2">
-                                    <label for="additionalQuestion1" class="col-form-label text-end">Aircraft
-                                        Type</label>
-                                </div>
-                                <div class="col-sm-4">
-                                    <select id="additionalQuestion1_select" name="additionalQuestion1"
-                                        class="form-select" required style="width: 300px">
-                                        <option
-                                            value="[X]Student Pilot - [s]Fixed Wing[/s] | [highlight=yellow]Rotary Wing[/highlight]"
-                                            selected>Rotary Wing</option>
-                                        <option
-                                            value="[X]Student Pilot - [highlight=yellow]Fixed Wing[/highlight] | [s]Rotary Wing[/s]">
-                                            Fixed Wing</option>
-                                        <option
-                                            value="[X]Student Pilot - [highlight=yellow]Fixed Wing[/highlight] | [highlight=yellow]Rotary Wing[/highlight]">
-                                            Both</option>
-                                    </select>
-                                    <small id="additionalQuestion1Help" class="form-text text-muted">Please select the
-                                        aircraft type.</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row mb-2">
                         <label for="privatePilot" class="col-lg-2 col-sm-2 col-form-label text-end">Private Pilot</label>
                         <div class="col-lg-4 col-sm-10">
                             <select id="privatePilot" name="privatePilot" class="form-select" required="" style="width: 400px" onchange="toggleQuestion('privatePilot')">
@@ -361,10 +324,7 @@
             </footer>
         </main>
     </main>
-    <script>if (document.getElementById("studentPilot").value === "Yes") {
-            document.getElementById("additionalQuestion1").style.display = "block";
-        }
-        if (document.getElementById("privatePilot").value === "Yes") {
+    <script>if (document.getElementById("privatePilot").value === "Yes") {
             document.getElementById("additionalQuestion2").style.display = "block";
         }
         if (document.getElementById("instructorPilot").value === "Yes") {
