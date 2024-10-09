@@ -84,9 +84,6 @@ function toggleQuestion(id) {
     var question;
 
     switch (id) {
-        case "studentPilot":
-            question = document.getElementById("additionalQuestion1");
-            break;
         case "privatePilot":
             question = document.getElementById("additionalQuestion2");
             break;
@@ -109,14 +106,6 @@ function generateLogOutput() {
 
     const logPilotName = document.getElementById("logPilotName").value;
     const licenseStatus = document.getElementById("licenseStatus").value;
-
-    var studentPilot;
-    if (document.getElementById("studentPilot").value == "Yes") {
-        studentPilot = document.getElementById("additionalQuestion1_select").value;
-    }
-    else {
-        studentPilot = "[ ]Student Pilot - Fixed Wing | Rotary Wing";
-    }
 
     var privatePilot;
     if (document.getElementById("privatePilot").value == "Yes") {
@@ -215,7 +204,7 @@ answer here\n\
 [i][color=#FF0000][size=85]By submitting this form, I certify under penalty of law the above information is correct and accurate to the best of my knowledge.[/size][/color][/i][/center][/spoiler]\n\
 \n\
 [code]\n\
-[img]https://i.imgur.com/hWCLSP8.png[/img]\n\
+[img]https://i.imgur.com/LR67YEG.png[/img]\n\
 \n\
 [divbox=#091f62][b][color=white]1. FLIGHT INFORMATION[/color][/b][/divbox]\n\
 [divbox=white]\n\
