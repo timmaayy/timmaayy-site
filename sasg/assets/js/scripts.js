@@ -39,8 +39,8 @@ function generateCertificateOutput() {
     // Generate output message
     const message = '[img]https://i.imgur.com/ZFpeXl3.png[/img][divbox=white]\n\
 [img]https://i.imgur.com/3i8Bk3M.png[/img][aligntable=right,350,0,0,0,0,#FFFFFF][right][font=Arial][b]\n\
-[size=130]SAN ANDREAS STATE GOVERNMENT[/size]\n\
-[size=115]San Andreas Aviation Administration[/size][/b][/font]\n\
+\n\
+[size=140]San Andreas Aviation Administration[/size][/b][/font]\n\
 \n\
 [font=Times New Roman][size=150]Private Pilots License Certification[/size][/font][/right][/aligntable]\n\
 [hr]\n\
@@ -57,10 +57,11 @@ function generateCertificateOutput() {
 \n\
 [hr][/hr]\n\
 \n\
-[font=Windows Fonts][i]Certificate issued and approved by[/i]\n\
+[font=Windows Fonts][i]Certificate issued and approved by[/i][/font]\n\
 \n\
-[fimg=160,40]https://fontmeme.com/permalink/200223/bb2ad2bc060b4bc13982ef91b6f9d995.png[/fimg]\n\
-Administrator | San Andreas Aviation Administration[/font]\n\
+[fimg=137,44]https://i.imgur.com/9gXEM4H.png[/fimg]\n\
+\n\
+[color=#091f62][size=100][b]Administrator | San Andreas Aviation Administration[/b][/size][/color]\n\
 [/divbox]\n\
 [img]https://i.imgur.com/ZFpeXl3.png[/img]';
 
@@ -76,7 +77,6 @@ function clearCertificateForm() {
     // Refresh the page
     location.reload();
 }
-
 
 /* Pilot Flight Logs */
 function toggleQuestion(id) {
@@ -142,7 +142,7 @@ function generateLogOutput() {
         commercialPilot = "[ ]Commercial Pilot - Fixed Wing | Rotary Wing";
     }
 
-    const logMessage = '[img]https://i.imgur.com/Xox4C1A.png[/img]\n\
+    const logMessage = '[img]https://i.imgur.com/EDfx4Gz.png[/img]\n\
 \n\
 [divbox=white]\n\
 [list=none]\n\
@@ -152,12 +152,10 @@ function generateLogOutput() {
 [b]License Standing:[/b] ' + licenseStatus + '\n\
 \n\
 [b]Current Certifications:[/b]\n\
-'+ studentPilot + '\n\
 '+ privatePilot + '\n\
 '+ instructorPilot + '\n\
 '+ commercialPilot + '\n\
 \n\
-[b]Total Hours Logged[/b] ([i]Updated Weekly by Staff[/i]) : 0 Hours\n\
 \n\
 \n\
 \n\
@@ -167,7 +165,7 @@ function generateLogOutput() {
 [i][color=#BF0000][b]***NOTICE - Flight Logs are to be filled within 24 hours of every flight under penalty of Law***[/b][/color][/i][/center]\n\
 \n\
 [spoiler=Live View]\n\
-[img]https://i.imgur.com/hWCLSP8.png[/img]\n\
+[img]https://i.imgur.com/LR67YEG.png[/img]\n\
 \n\
 [divbox=#091f62][b][color=white]1. FLIGHT INFORMATION[/color][/b][/divbox]\n\
 [divbox=white]\n\
@@ -265,7 +263,9 @@ answer here\n\
 [hr][/hr]\n\
 \n\
 [i][color=#FF0000][size=85]By submitting this form, I certify under penalty of law the above information is correct and accurate to the best of my knowledge.[/size][/color][/i][/center][/code]\n\
-[/divbox]'
+[/divbox]\n\
+\n\
+[img]https://i.imgur.com/ZFpeXl3.png[/img]'
 
     // Display certificate output message
     document.getElementById("logOutput").value = logMessage;
